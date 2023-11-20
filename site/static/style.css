@@ -3,9 +3,9 @@ body {
   padding-top: 75px;
 }
 
-a{color: #1976D2; text-decoration: none;}
+a{color: #0D8134; text-decoration: none;}
 a:hover{text-decoration: underline;}
-a:visted{color: #1976D2}
+a:visted{color: #0D8134}
 
 section {
   padding-top: 75px;
@@ -13,7 +13,7 @@ section {
 }
 
 .navbar-default {
-    background-color: #1E88E5;
+    background-color: #0D8134;
     border-bottom: 1px solid #1976D2;
     background-image: none;
     background-repeat: no-repeat;
@@ -57,7 +57,7 @@ section {
 }
 
 @media only screen and (max-width: 766px) {
-.collapsing, .in {background-color: #1E88E5;}
+.collapsing, .in {background-color: #0D8134;}
 .collapsing ul li a, .in ul li a {color: #FFF!important;}
 .collapsing ul li a:hover, .in ul li a:hover {color: #fff!important;}
 }

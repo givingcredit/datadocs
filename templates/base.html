@@ -30,9 +30,9 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Datasets <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              {% for dataset in datasets %}
+              {% for dataset in sections %}
                 <li><a href="{{dataset.getHtmlName()}}">{{dataset.title}}</a></li>
               {% endfor %}
             </ul>
@@ -40,7 +40,7 @@
         </ul>
         <div class="navbar-form navbar-right" role="search">
           <div class="input-group">
-            <input type="input" id="search-nav" placeholder="&#xf002; Search datasets" class="form-control" style="font-family:Arial, FontAwesome;"/>
+            <input type="input" id="search-nav" placeholder="&#xf002; Search sections" class="form-control" style="font-family:Arial, FontAwesome;"/>
           </div>
         </div>
       </div><!--/.nav-collapse -->
@@ -57,7 +57,7 @@
         </div>
         <div class="modal-body">
           <div class="input-group" style="margin-bottom: 25px;">
-            <input type="input" id="search" placeholder="&#xf002; Search datasets" class="form-control" style="font-family:Arial, FontAwesome;"/>
+            <input type="input" id="search" placeholder="&#xf002; Search sections" class="form-control" style="font-family:Arial, FontAwesome;"/>
           </div>
           <div class="content" id="search-results"></div>
         </div>
@@ -69,7 +69,7 @@
   </div>
 
   <script type="text/javascript">
-  // after clicking a category link in the TOC, close the modal
+  // after clicking a table link in the TOC, close the modal
   $("#search-nav").click(function(){
     // open the search modal
     $('#search-modal').modal('show');
@@ -103,7 +103,7 @@ var search = {% block search %}{% endblock %};
 var index = lunr(function () {
   this.field('field', {boost: 10});
   this.field('description', {boost: 3});
-  this.field('category', {boost: 5});
+  this.field('table', {boost: 5});
   this.field('dataset');
   this.ref('field_link');
 });
@@ -114,7 +114,7 @@ $.each(search, function(i, el){
     'field_link': el['field_link'],
     'field': el['field'],
     'description': el['description'],
-    'category': el['category'],
+    'table': el['table'],
     'dataset': el['dataset']
   });
 });
@@ -129,8 +129,8 @@ $("#search").keyup(function(){
     var displayResults = '<table class="table">';
     displayResults += '<tr>';
     displayResults += '<th>Field</th>';
-    displayResults += '<th>Category</th>';
-    displayResults += '<th>Dataset</th>';
+    displayResults += '<th>Table</th>';
+    displayResults += '<th>Section</th>';
     displayResults += '</tr>';
 
     // prepare the results to display
@@ -141,7 +141,7 @@ $("#search").keyup(function(){
 
       displayResults += '<tr>';
       displayResults += '<td><a href="' + field.field_link + '" class="result"><code>' + field.field + "</code></a></td>";
-      displayResults += '<td><a href="' + field.category_link + '" class="result">' + field.category + "</a></td>";
+      displayResults += '<td><a href="' + field.table_link + '" class="result">' + field.table + "</a></td>";
       displayResults += '<td><a href="' + field.dataset_link + '" class="result">' + field.dataset + "</a></td>";
       displayResults += '</tr>';
     });

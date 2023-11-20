@@ -4,12 +4,13 @@
 {% block search %}
   {{search}}
 {% endblock %}
-{% block datasets %}
-  {{datasets}}
+{% block Sections %}
+{{Sections}}
 {% endblock %}
 {% block content %}
 
 <div class="meta-container">
+  <img src="static/images/logo.png" />
   <div class="meta-title">{{docTitle}}</div>
 </div>
 <div class="row">
@@ -17,32 +18,26 @@
     {% if content %}
     {{content|safe}}
     {% endif %}
-    <h1>Datasets</h1>
+    <h1>Sections</h1>
     <table class="table">
       <tr>
-        <th>Dataset</th>
+        <th>Section</th>
         <th>Description</th>
-        {% if showPercentAnswered%}
-        <th>Rows</th>
-        {% endif %}
         <th>Fields</th>
       </tr>
-      {% for dataset in datasets %}
+      {% for section in sections %}
       <tr>
         <td>
-          <a href="{{dataset.getHtmlName()}}">
-            {% if dataset.title %}
-            {{dataset.title}}
+          <a href="{{section.getHtmlName()}}">
+            {% if section.title %}
+            {{section.title}}
             {% else %}
-            {{dataset.name}}
+            {{section.name}}
             {% endif %}
           </a>
         </td>
-        <td>{{dataset.description}}</td>
-        {% if showPercentAnswered%}
-        <td>{{dataset.numberOfRows}}</td>
-        {% endif %}
-        <td><span class="badge">{{dataset.countFields()}}</span></td>
+        <td>{{section.description}}</td>
+        <td><span class="badge">{{section.countFields()}}</span></td>
       </tr>
       {% endfor %}
     </table>

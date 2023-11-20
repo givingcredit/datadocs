@@ -11,7 +11,11 @@
     <script src="static/lunr/lunr.min.js"></script>
     <script src="static/underscore/underscore-min.js"></script>
     <link rel="stylesheet" href="static/style.css" />
-    <title>Giving Credit Data Dictionary</title>
+    <title>
+  
+    Entities
+  
+</title>
     
 </head>
 <body>
@@ -89,71 +93,177 @@
       
 
 <div class="meta-container">
-  <img src="static/images/logo.png" />
-  <div class="meta-title">Giving Credit Data Dictionary</div>
+  <div class="meta-title">
+    Entities
+    <div style="text-align: center;">
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#toc">
+        Table of contents
+      </button>
+    </div>
+  </div>
+  <div class="meta-description">Entities are the backbone of the Giving Credit data model</div>
 </div>
-<div class="row">
-  <div class="col-md-12">
-    
-    <h1>Introduction</h1>
-<p>This is a sample implementation of <a href="https://github.com/dhenderson/datadocs">Datadocs</a>. Datadocs is a way to document your datasets, often called things like:</p>
-<ul>
-<li>Data documentation</li>
-<li>Data dictionary</li>
-<li>Code book</li>
-<li>etc.</li>
-</ul>
-<p>Whatever you call it, Datadocs is a way of documenting it.</p>
-<h1>Getting started with Datadocs</h1>
-<p>See the <code>README.md</code> file for detailed documentation for getting started. You should however clear out the contents of <code>/docs</code>, including this file, and put in your own documentation files. You should however get started by deleting the contents of this <code>index.md</code> file and writing your own documentation index page here.</p>
-    
-    <h1>Sections</h1>
+
+<!-- optional markdown content -->
+
+
+<!-- table of contents -->
+<div class="modal fade" id="toc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Table of contents</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+// after clicking a table link in the TOC, close the modal
+$("a.toc-link").click(function(){
+  $('#toc').modal('hide')
+});
+</script>
+
+
+
+<div class="row table-container">
+  <div class="col-md-3">
+    <section id="table-1">
+      <h2>Entities</h2>
+      <div class="">
+        <code>entities_entity</code>
+      </div>
+      <p class="table-description">Individual entity represtented on Giving Credit</p>
+    </section>
+  </div>
+  <div class="col-md-9">
     <table class="table">
-      <tr>
-        <th>Section</th>
-        <th>Description</th>
-        <th>Fields</th>
-      </tr>
-      
-      <tr>
-        <td>
-          <a href="entities.html">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-1">
+              
+              
+            </section>
+          </td>
+          <td>
+            <code>ID</code>
+          </td>
+          <td>Unique identifier</td>
+          <td>
             
-            Entities
+              None
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-2">
+              
+              
+            </section>
+          </td>
+          <td>
+            <code>UUID</code>
+          </td>
+          <td>Unique entity identifier</td>
+          <td>
             
-          </a>
-        </td>
-        <td>Entities are the backbone of the Giving Credit data model</td>
-        <td><span class="badge">6</span></td>
-      </tr>
-      
-      <tr>
-        <td>
-          <a href="partner_organizations.html">
+              None
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-3">
+              
+              
+            </section>
+          </td>
+          <td>
+            <code>entity_type</code>
+          </td>
+          <td>Name of the entity type: ('person', 'organization', etc.)</td>
+          <td>
             
-            Partner Organizations
+              None
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-4">
+              
+              
+            </section>
+          </td>
+          <td>
+            <code>created_at</code>
+          </td>
+          <td>Datetime the entity was created</td>
+          <td>
             
-          </a>
-        </td>
-        <td>Entities are the backbone of the Giving Credit data model</td>
-        <td><span class="badge">1</span></td>
-      </tr>
-      
-      <tr>
-        <td>
-          <a href="example.html">
+              None
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-5">
+              
+              
+            </section>
+          </td>
+          <td>
+            <code>updated_at</code>
+          </td>
+          <td>Datetime the entity was updated</td>
+          <td>
             
-            Example
+              None
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-6">
+              
+              
+            </section>
+          </td>
+          <td>
+            <code>Visbility</code>
+          </td>
+          <td>Determines what entities can see this entity's profile (hidden, network, authenicated, public). </td>
+          <td>
             
-          </a>
-        </td>
-        <td>Example dataset to get you started. This page documents a giberish dataset of five non-existant people and their preference for dogs and cake. You should delete this.</td>
-        <td><span class="badge">8</span></td>
-      </tr>
-      
+              None
+          </td>
+        </tr>
+        
+      </tbody>
     </table>
   </div>
 </div>
+
+
 
     </div>
     <div class="footer">

@@ -29,13 +29,17 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Example Datadoc</a>
+        <a class="navbar-brand" href="index.html">Giving Credit Data Dictionary</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Datasets <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
             <ul class="dropdown-menu">
+              
+                <li><a href="entities.html">Entities</a></li>
+              
+                <li><a href="partner_organizations.html">Partner Organizations</a></li>
               
                 <li><a href="example.html">Example</a></li>
               
@@ -44,7 +48,7 @@
         </ul>
         <div class="navbar-form navbar-right" role="search">
           <div class="input-group">
-            <input type="input" id="search-nav" placeholder="&#xf002; Search datasets" class="form-control" style="font-family:Arial, FontAwesome;"/>
+            <input type="input" id="search-nav" placeholder="&#xf002; Search sections" class="form-control" style="font-family:Arial, FontAwesome;"/>
           </div>
         </div>
       </div><!--/.nav-collapse -->
@@ -61,7 +65,7 @@
         </div>
         <div class="modal-body">
           <div class="input-group" style="margin-bottom: 25px;">
-            <input type="input" id="search" placeholder="&#xf002; Search datasets" class="form-control" style="font-family:Arial, FontAwesome;"/>
+            <input type="input" id="search" placeholder="&#xf002; Search sections" class="form-control" style="font-family:Arial, FontAwesome;"/>
           </div>
           <div class="content" id="search-results"></div>
         </div>
@@ -73,7 +77,7 @@
   </div>
 
   <script type="text/javascript">
-  // after clicking a category link in the TOC, close the modal
+  // after clicking a table link in the TOC, close the modal
   $("#search-nav").click(function(){
     // open the search modal
     $('#search-modal').modal('show');
@@ -102,13 +106,6 @@
 
 <!-- optional markdown content -->
 
-<p>This page provides documentation for some nonsense data. A few things to note in the <code>docs/example.yaml</code> file which defines the dataset features on this page:</p>
-<ol>
-<li><strong>Datatype guesses</strong> - Datadocs attempts to guess the datatype of each filed by reading the provided <code>.csv</code> file. If you want to ensure the proper datatypes is included, you can use the 'type' key when defining a field.</li>
-<li><strong>Private fields</strong> - The field <code>sex</code> is set to <code>private</code>. A private field is noted with a lock icon, and signals to the reader that while the field exists, it may not be available to be shared with others.</li>
-<li><strong>Transformed fields</strong> - The <code>is_male_likes_cake</code> is set to <code>transformed</code>. Transformation means the datapoint has some how been constructed. For example, in this case <code>is_male_likes_cake</code> is determined based on answers to the <code>Sex</code> and <code>Likes cake</code> fields. Transformed fields are noted by an "edit" icon.</li>
-</ol>
-
 
 <!-- table of contents -->
 <div class="modal fade" id="toc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -120,18 +117,6 @@
       </div>
       <div class="modal-body">
         
-          <h3>
-            <a href="#category-1" class="toc-link scroll-to-location">Identifiers and demographics</a>
-            <span class="badge">5</span>
-          </h3>
-          <p style="margin-left: 10px;">Unique ID's and basic demographics for each individual in the dataset.</p>
-        
-          <h3>
-            <a href="#category-2" class="toc-link scroll-to-location">Likes</a>
-            <span class="badge">3</span>
-          </h3>
-          <p style="margin-left: 10px;">Things this person likes.</p>
-        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -141,7 +126,7 @@
 </div>
 
 <script type="text/javascript">
-// after clicking a category link in the TOC, close the modal
+// after clicking a table link in the TOC, close the modal
 $("a.toc-link").click(function(){
   $('#toc').modal('hide')
 });
@@ -149,11 +134,14 @@ $("a.toc-link").click(function(){
 
 
 
-<div class="row category-container">
+<div class="row table-container">
   <div class="col-md-3">
-    <section id="category-1">
-      <div class="category-title">Identifiers and demographics</div>
-      <p class="category-description">Unique ID's and basic demographics for each individual in the dataset.</p>
+    <section id="table-1">
+      <h2>Identifiers and demographics</h2>
+      <div class="">
+        <code>example</code>
+      </div>
+      <p class="table-description">Unique ID's and basic demographics for each individual in the dataset.</p>
     </section>
   </div>
   <div class="col-md-9">
@@ -164,7 +152,6 @@ $("a.toc-link").click(function(){
           <th>Field</th>
           <th>Description</th>
           <th>Type</th>
-          
         </tr>
       </thead>
       <tbody>
@@ -182,11 +169,8 @@ $("a.toc-link").click(function(){
           <td>Unique identifier</td>
           <td>
             
-              <i class="fa fa-hashtag" title="Numeric"></i>
-            
-              Numeric
+              None
           </td>
-          
         </tr>
         
         <tr class="field">
@@ -202,11 +186,8 @@ $("a.toc-link").click(function(){
           <td>First name</td>
           <td>
             
-              <i class="fa fa-list-ul" title="Text"></i>
-            
-              Categorical
+              None
           </td>
-          
         </tr>
         
         <tr class="field">
@@ -222,11 +203,8 @@ $("a.toc-link").click(function(){
           <td>Last name</td>
           <td>
             
-              <i class="fa fa-list-ul" title="Text"></i>
-            
-              Categorical
+              None
           </td>
-          
         </tr>
         
         <tr class="field">
@@ -242,11 +220,8 @@ $("a.toc-link").click(function(){
           <td>Sex. Note this field is set to "private"</td>
           <td>
             
-              <i class="fa fa-list-ul" title="Text"></i>
-            
-              Categorical
+              None
           </td>
-          
         </tr>
         
         <tr class="field">
@@ -262,11 +237,8 @@ $("a.toc-link").click(function(){
           <td>Date the person was borned in form YYYY-MM-DD</td>
           <td>
             
-              <i class="fa fa-calendar" title="Date"></i>
-            
-              Date
+              None
           </td>
-          
         </tr>
         
       </tbody>
@@ -275,11 +247,14 @@ $("a.toc-link").click(function(){
 </div>
 
 
-<div class="row category-container">
+<div class="row table-container">
   <div class="col-md-3">
-    <section id="category-2">
-      <div class="category-title">Likes</div>
-      <p class="category-description">Things this person likes.</p>
+    <section id="table-2">
+      <h2>Likes</h2>
+      <div class="">
+        <code>likes</code>
+      </div>
+      <p class="table-description">Things this person likes.</p>
     </section>
   </div>
   <div class="col-md-9">
@@ -290,7 +265,6 @@ $("a.toc-link").click(function(){
           <th>Field</th>
           <th>Description</th>
           <th>Type</th>
-          
         </tr>
       </thead>
       <tbody>
@@ -308,11 +282,8 @@ $("a.toc-link").click(function(){
           <td>Whether this person likes cake or not</td>
           <td>
             
-              <i class="fa fa-toggle-off" title="Boolean"></i>
-            
-              Boolean
+              None
           </td>
-          
         </tr>
         
         <tr class="field">
@@ -328,11 +299,8 @@ $("a.toc-link").click(function(){
           <td>Whether this person likes dogs or not</td>
           <td>
             
-              <i class="fa fa-toggle-off" title="Boolean"></i>
-            
-              Boolean
+              None
           </td>
-          
         </tr>
         
         <tr class="field">
@@ -348,11 +316,8 @@ $("a.toc-link").click(function(){
           <td>Indicates whether this individual is both a male and likes cake. This is an example of a "tranformed" field.</td>
           <td>
             
-              <i class="fa fa-toggle-off" title="Boolean"></i>
-            
-              Boolean
+              None
           </td>
-          
         </tr>
         
       </tbody>
@@ -378,13 +343,13 @@ $('#search-nav').keydown(function() {
 });
 
 var search = 
-  [{"field": "ID", "description": "Unique identifier", "category": "Identifiers and demographics", "dataset": "Example", "field_link": "example.html#field-1-1", "category_link": "example.html#category-1", "dataset_link": "example.html"}, {"field": "First name", "description": "First name", "category": "Identifiers and demographics", "dataset": "Example", "field_link": "example.html#field-1-2", "category_link": "example.html#category-1", "dataset_link": "example.html"}, {"field": "Last name", "description": "Last name", "category": "Identifiers and demographics", "dataset": "Example", "field_link": "example.html#field-1-3", "category_link": "example.html#category-1", "dataset_link": "example.html"}, {"field": "Sex", "description": "Sex. Note this field is set to \"private\"", "category": "Identifiers and demographics", "dataset": "Example", "field_link": "example.html#field-1-4", "category_link": "example.html#category-1", "dataset_link": "example.html"}, {"field": "Date of birth", "description": "Date the person was borned in form YYYY-MM-DD", "category": "Identifiers and demographics", "dataset": "Example", "field_link": "example.html#field-1-5", "category_link": "example.html#category-1", "dataset_link": "example.html"}, {"field": "Likes cake", "description": "Whether this person likes cake or not", "category": "Likes", "dataset": "Example", "field_link": "example.html#field-2-1", "category_link": "example.html#category-2", "dataset_link": "example.html"}, {"field": "Likes dogs", "description": "Whether this person likes dogs or not", "category": "Likes", "dataset": "Example", "field_link": "example.html#field-2-2", "category_link": "example.html#category-2", "dataset_link": "example.html"}, {"field": "is_male_likes_cake", "description": "Indicates whether this individual is both a male and likes cake. This is an example of a \"tranformed\" field.", "category": "Likes", "dataset": "Example", "field_link": "example.html#field-2-3", "category_link": "example.html#category-2", "dataset_link": "example.html"}]
+  [{"field": "ID", "description": "Unique identifier", "table": "Entities", "section": "Entities", "field_link": "entities.html#field-1-1", "table_link": "entities.html#table-1", "section_link": "entities.html"}, {"field": "UUID", "description": "Unique entity identifier", "table": "Entities", "section": "Entities", "field_link": "entities.html#field-1-2", "table_link": "entities.html#table-1", "section_link": "entities.html"}, {"field": "entity_type", "description": "Name of the entity type: ('person', 'organization', etc.)", "table": "Entities", "section": "Entities", "field_link": "entities.html#field-1-3", "table_link": "entities.html#table-1", "section_link": "entities.html"}, {"field": "created_at", "description": "Datetime the entity was created", "table": "Entities", "section": "Entities", "field_link": "entities.html#field-1-4", "table_link": "entities.html#table-1", "section_link": "entities.html"}, {"field": "updated_at", "description": "Datetime the entity was updated", "table": "Entities", "section": "Entities", "field_link": "entities.html#field-1-5", "table_link": "entities.html#table-1", "section_link": "entities.html"}, {"field": "Visbility", "description": "Determines what entities can see this entity's profile (hidden, network, authenicated, public). ", "table": "Entities", "section": "Entities", "field_link": "entities.html#field-1-6", "table_link": "entities.html#table-1", "section_link": "entities.html"}, {"field": "ID", "description": "Unique identifier", "table": "Entities", "section": "Partner Organizations", "field_link": "partner_organizations.html#field-1-1", "table_link": "partner_organizations.html#table-1", "section_link": "partner_organizations.html"}, {"field": "ID", "description": "Unique identifier", "table": "Identifiers and demographics", "section": "Example", "field_link": "example.html#field-1-1", "table_link": "example.html#table-1", "section_link": "example.html"}, {"field": "First name", "description": "First name", "table": "Identifiers and demographics", "section": "Example", "field_link": "example.html#field-1-2", "table_link": "example.html#table-1", "section_link": "example.html"}, {"field": "Last name", "description": "Last name", "table": "Identifiers and demographics", "section": "Example", "field_link": "example.html#field-1-3", "table_link": "example.html#table-1", "section_link": "example.html"}, {"field": "Sex", "description": "Sex. Note this field is set to \"private\"", "table": "Identifiers and demographics", "section": "Example", "field_link": "example.html#field-1-4", "table_link": "example.html#table-1", "section_link": "example.html"}, {"field": "Date of birth", "description": "Date the person was borned in form YYYY-MM-DD", "table": "Identifiers and demographics", "section": "Example", "field_link": "example.html#field-1-5", "table_link": "example.html#table-1", "section_link": "example.html"}, {"field": "Likes cake", "description": "Whether this person likes cake or not", "table": "Likes", "section": "Example", "field_link": "example.html#field-2-1", "table_link": "example.html#table-2", "section_link": "example.html"}, {"field": "Likes dogs", "description": "Whether this person likes dogs or not", "table": "Likes", "section": "Example", "field_link": "example.html#field-2-2", "table_link": "example.html#table-2", "section_link": "example.html"}, {"field": "is_male_likes_cake", "description": "Indicates whether this individual is both a male and likes cake. This is an example of a \"tranformed\" field.", "table": "Likes", "section": "Example", "field_link": "example.html#field-2-3", "table_link": "example.html#table-2", "section_link": "example.html"}]
 ;
 // create the search index
 var index = lunr(function () {
   this.field('field', {boost: 10});
   this.field('description', {boost: 3});
-  this.field('category', {boost: 5});
+  this.field('table', {boost: 5});
   this.field('dataset');
   this.ref('field_link');
 });
@@ -395,7 +360,7 @@ $.each(search, function(i, el){
     'field_link': el['field_link'],
     'field': el['field'],
     'description': el['description'],
-    'category': el['category'],
+    'table': el['table'],
     'dataset': el['dataset']
   });
 });
@@ -410,8 +375,8 @@ $("#search").keyup(function(){
     var displayResults = '<table class="table">';
     displayResults += '<tr>';
     displayResults += '<th>Field</th>';
-    displayResults += '<th>Category</th>';
-    displayResults += '<th>Dataset</th>';
+    displayResults += '<th>Table</th>';
+    displayResults += '<th>Section</th>';
     displayResults += '</tr>';
 
     // prepare the results to display
@@ -422,7 +387,7 @@ $("#search").keyup(function(){
 
       displayResults += '<tr>';
       displayResults += '<td><a href="' + field.field_link + '" class="result"><code>' + field.field + "</code></a></td>";
-      displayResults += '<td><a href="' + field.category_link + '" class="result">' + field.category + "</a></td>";
+      displayResults += '<td><a href="' + field.table_link + '" class="result">' + field.table + "</a></td>";
       displayResults += '<td><a href="' + field.dataset_link + '" class="result">' + field.dataset + "</a></td>";
       displayResults += '</tr>';
     });

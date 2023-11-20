@@ -1,6 +1,8 @@
-title: "Example Datadoc" # title for the documentation overall
+title: "Giving Credit Data Dictionary" # title for the documentation overall
 show_uncategorized: false # whether to show fields you have not provided documentation for
 show_percent_answered: false # whether to show the percent of fields that are not null
 show_private: true # whether to show fields designated private or not
-datasets:
+sections:
+  - name: "entities"
+  - name: "partners"
   - name: "example"
