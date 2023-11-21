@@ -1,7 +1,7 @@
 title: Accounts
 description: >
   Accounts are owned by entities and are used to exchange value. Each Account has an 
-  Account Type. Each Account has a currency type. It's worth noting "curency" does not have 
+  Account Type. Each Account has a currency type. It's worth noting "currency" does not have 
   to mean government (or crypto) money. For example, Giving Credit recognizes a "social capital" 
   account which can be used to barter.
 tables:
