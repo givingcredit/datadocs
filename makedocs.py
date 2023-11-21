@@ -21,10 +21,12 @@ class Section():
     """
 
     Args:
+        name (String)               Name of the section
         title (String)               Section title
         description (String)         Description
     """
-    def __init__(self, title = None, description = None):
+    def __init__(self, name, title, description):
+        self.name = name
         self.title = title
         self.description = description
         self.tables = []
@@ -50,16 +52,13 @@ class Section():
     def getHtmlName(self, appendText=None):
         """
         Returns a string taking the file name and turning it into a
-        reasonable html file name that strips white space and .csv
+        reasonable html file name that strips white space
 
         Args:
             appendText      String optional text to append to the end of the
                             html file name.
         """
-        htmlName = self.title.replace(' ', '_').lower()
-        htmlName = htmlName.replace('.csv', '')
-        if appendText:
-            htmlName += "_" + appendText
+        htmlName = self.name.replace(' ', '_').lower()
         htmlName += '.html'
         return htmlName
 
@@ -217,7 +216,7 @@ if __name__ == "__main__":
         section_yaml = yaml.load(open("docs/" + s['name'] + ".yaml", "r"), Loader=yaml.Loader)
 
         # create a section object
-        section = Section(title=section_yaml['title'], description=section_yaml['description'])
+        section = Section(name=s['name'], title=section_yaml['title'], description=section_yaml['description'])
         # read the data set as a csv and convert to a data frame
         #df = pd.read_csv("docs/" + sectionFileName, sep=',', header=0, encoding='ISO-8859-1', index_col=None)
 

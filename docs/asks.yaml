@@ -1,0 +1,47 @@
+title: Requests
+description: >
+  On Giving Credit, users can make requests of others through 'Asks'. An Ask can be a requst for a loan or
+  to request compensation on an insurance claim.
+tables:
+  - title: Ask
+    name: webapp.finances_ask
+    description: >
+      An Ask represents a request from one entity to another for a specific thing.
+    fields: # list of fields in this category
+      - name: id
+        type: Number
+        description: Ask ID
+      - name: uuid
+        type: UUID
+        description: Ask UUID
+      - name: memo
+        type: Text
+        private: true
+        description: Memo along with this Ask
+      - name: amount
+        type: Numeric
+        description: Amount of the Ask
+      - name: balance
+        type: Numeric
+        description: Amount of the Ask that has not been fullfilled
+      - name: due_date
+        type: Date
+        description: When the Ask is due, the meaning can change based on the ask type.
+      - name: visibility
+        type: Text
+        description: Who can see this ask, such as 'public', 'network', or 'individual'
+      - name: status
+        type: Text
+        description: Status of the ask, such as 'requestd', 'settled', or 'cancelled'
+      - name: requested_by_id
+        type: Numeric
+        description: Entity that made the request
+      - name: requested_of_id
+        type: Numeric
+        description: Entity that is being asked
+      - name: outcome_type_id
+        type: Numeric
+        description: Outcome Type ID, if one is associated with this ask
+      - name: credit_id
+        type: Numeric
+        description: Credit ID, if this ask is being made on a line of credit

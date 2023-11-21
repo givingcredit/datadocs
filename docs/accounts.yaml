@@ -17,6 +17,9 @@ tables:
       - name: uuid
         type: UUID
         description: Account UUID
+      - name: entity_id
+        type: Numeric
+        description: Entity that owns the account
       - name: show_on_profile
         type: Boolean
         description: Whether to show this account on an entity's profile.
@@ -53,3 +56,42 @@ tables:
         description: >
           Entity's phone number for this account. For example, if the type is "Zelle", the user might 
           provide the phone number associated with their Zelle account.
+  - title: AccountType
+    name: webapp.finances_accounttype
+    description: >
+      There are multiple types of accounts recognized on Giving Credit, each with its own unique features. The Account Type
+      object defines what feature each account has available.
+    fields: # list of fields in this category
+      - name: id
+        type: Number
+        description: Account Type ID
+      - name: name
+        type: Text
+        description: Internal system name, like 'paypal' or 'cashapp'
+      - name: display_name
+        type: Texd
+        description: Display name, like 'Paypal Inc.' or 'Cash App'
+      - name: website
+        type: Text
+        description: Website for the Account Type of applicable
+      - name: connected_account
+        type: Boolean
+        description: Whether this Account Type can be connected to a third party payment API
+      - name: handle_username_enabled
+        type: Boolean
+        description: Whether this account type can have an associated username
+      - name: handle_email_enabled
+        type: Boolean
+        description: Whether this account type can have an associated email address
+      - name: handle_phone_enabled
+        type: Boolean
+        description: Whether this account type can have an associated phone number
+      - name: payment_option
+        type: Boolean
+        description: Whether this account type can be used to make (record) payments on Giving Credit
+      - name: fund_note_enabled
+        type: Boolean
+        description: Whether this account type can be used to fund a note (loan)
+      - name: money
+        type: Boolean
+        description: Whether this account type represents money or not

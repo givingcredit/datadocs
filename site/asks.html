@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="static/style.css" />
     <title>
   
-    People
+    Requests
   
 </title>
     
@@ -102,9 +102,9 @@
 
 <div class="mt-6 mb-6">
   <h1 class="title">
-    People
+    Requests
   </h1>
-  <div class="block has-text-grey is-size-4">People are users on Giving Credit. Every person, whether a regular user of Giving Credit or a staff memmber  for a partner organization is represented as a Person.
+  <div class="block has-text-grey is-size-4">On Giving Credit, users can make requests of others through 'Asks'. An Ask can be a requst for a loan or to request compensation on an insurance claim.
 </div>
 </div>
 
@@ -116,11 +116,12 @@
 <div class="section box">
   <div class="">
     <section id="table-1">
-      <h2>Person</h2>
+      <h2>Ask</h2>
       <div class="block">
-        <code class="database-table-name">webapp.people_person</code>
+        <code class="database-table-name">webapp.finances_ask</code>
       </div>
-      <div class="mt-6 mb-6 is-size-5 has-text-grey">Each person has exactly one entity. A person is a user on the platform, regardless of one’s role (borrower, lender, partner administrator, etc.)</div>
+      <div class="mt-6 mb-6 is-size-5 has-text-grey">An Ask represents a request from one entity to another for a specific thing.
+</div>
     </section>
   </div>
   <div class="">
@@ -137,11 +138,11 @@
         <tr class="field">
           <td>
             <section id="field-1-1">
-              <code>ID</code>
+              <code>id</code>
               
             </section>
           </td>
-          <td>Person ID</td>
+          <td>Ask ID</td>
           <td>
             
               Number
@@ -151,11 +152,11 @@
         <tr class="field">
           <td>
             <section id="field-1-2">
-              <code>UUID</code>
+              <code>uuid</code>
               
             </section>
           </td>
-          <td>Unique person identifier</td>
+          <td>Ask UUID</td>
           <td>
             
               UUID
@@ -165,11 +166,11 @@
         <tr class="field">
           <td>
             <section id="field-1-3">
-              <code>first_name</code>
+              <code>memo</code>
                <i class="fa fa-lock mr-2" title="Field is private"></i>
             </section>
           </td>
-          <td>First name</td>
+          <td>Memo along with this Ask</td>
           <td>
             
               <i class="fa fa-paragraph" title="Text"></i>
@@ -181,27 +182,43 @@
         <tr class="field">
           <td>
             <section id="field-1-4">
-              <code>last_name</code>
-               <i class="fa fa-lock mr-2" title="Field is private"></i>
+              <code>amount</code>
+              
             </section>
           </td>
-          <td>Last name</td>
+          <td>Amount of the Ask</td>
           <td>
             
-              <i class="fa fa-paragraph" title="Text"></i>
+              <i class="fa fa-hashtag" title="Numeric"></i>
             
-              Text
+              Numeric
           </td>
         </tr>
         
         <tr class="field">
           <td>
             <section id="field-1-5">
-              <code>last_login</code>
+              <code>balance</code>
               
             </section>
           </td>
-          <td>Last time the user logged in</td>
+          <td>Amount of the Ask that has not been fullfilled</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-6">
+              <code>due_date</code>
+              
+            </section>
+          </td>
+          <td>When the Ask is due, the meaning can change based on the ask type.</td>
           <td>
             
               <i class="fa fa-calendar" title="Date"></i>
@@ -212,28 +229,12 @@
         
         <tr class="field">
           <td>
-            <section id="field-1-6">
-              <code>locale</code>
-              
-            </section>
-          </td>
-          <td>Two letter language locale</td>
-          <td>
-            
-              <i class="fa fa-paragraph" title="Text"></i>
-            
-              Text
-          </td>
-        </tr>
-        
-        <tr class="field">
-          <td>
             <section id="field-1-7">
-              <code>timezone</code>
+              <code>visibility</code>
               
             </section>
           </td>
-          <td>User's time zone</td>
+          <td>Who can see this ask, such as 'public', 'network', or 'individual'</td>
           <td>
             
               <i class="fa fa-paragraph" title="Text"></i>
@@ -245,11 +246,75 @@
         <tr class="field">
           <td>
             <section id="field-1-8">
-              <code>entity_id</code>
+              <code>status</code>
               
             </section>
           </td>
-          <td>Entity ID for this user</td>
+          <td>Status of the ask, such as 'requestd', 'settled', or 'cancelled'</td>
+          <td>
+            
+              <i class="fa fa-paragraph" title="Text"></i>
+            
+              Text
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-9">
+              <code>requested_by_id</code>
+              
+            </section>
+          </td>
+          <td>Entity that made the request</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-10">
+              <code>requested_of_id</code>
+              
+            </section>
+          </td>
+          <td>Entity that is being asked</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-11">
+              <code>outcome_type_id</code>
+              
+            </section>
+          </td>
+          <td>Outcome Type ID, if one is associated with this ask</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-12">
+              <code>credit_id</code>
+              
+            </section>
+          </td>
+          <td>Credit ID, if this ask is being made on a line of credit</td>
           <td>
             
               <i class="fa fa-hashtag" title="Numeric"></i>
