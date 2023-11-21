@@ -1,0 +1,66 @@
+title: Funds
+description: >
+  Funds are how partner organizations capitalize social credit networks on Giving Credit. 
+  Each Fund is operated by a Partner Organization and has a distinct Fund Type. For example, one 
+  fund might provide loan guarantees while another fund might provide cash transfers.
+tables: # list of categories to place your fields in
+  - title: Fund
+    name: webapp.partners_fund
+    description: Each fund has a type. This table defines each type of fund available on the platform.
+    fields: # list of fields in this category
+      - name: id
+        type: Number
+        description: Fund ID
+      - name: name
+        type: Text
+        description: Name of the fund
+      - name: status
+        type: Text
+        description: Active or inactive
+      - name: organization_id
+        type: Numeric
+        description: Organization ID that operates this fund
+      - name: created_by_id
+        type: Numeric
+        description: Entity ID that created the fund
+      - name: created_at
+        type: Date
+        description: Datetime the fund was created at
+      - name: updated_at
+        type: Date
+        description: Datetime the fund was updated at
+  - title: Fund Type
+    name: webapp.partners_fundtype
+    description: Each fund has exactly one Fund Type.
+    fields: 
+      - name: id
+        type: Number
+        description: Fund Type ID
+      - name: name
+        type: Text
+        description: Fund type such as "loan_guarantee_fund", "cash_transfer_fund", etc.
+  - title: Fund Member
+    name: webapp.partners_fundmember
+    description: > 
+      Each fund can have any number of members. Members are users on the platform who have a relationship with 
+      the fund. A fund membership does not mean the member receives a benefit from the 
+      fund (such as a loan guarantee), but one cannot receive a benefit from the fund 
+      without being a fund member. The FundMember object has a Constituent. 
+      The logic here is that a person is a Constituent of an Organization 
+      and uses various Funds via Fund Membership.
+    fields: 
+      - name: id
+        type: Number
+        description: Fund Member ID
+      - name: active
+        type: Boolean
+        description: Whether the member is active with this fund or not. True for active.
+      - name: constituent_id
+        type: Numeric
+        description: ID for the constituent.
+      - name: created_by_id
+        type: Numeric
+        description: Entity that created the fund member
+      - name: fund_id
+        type: Numeric
+        description: Fund ID this constituent is a member of

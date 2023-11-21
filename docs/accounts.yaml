@@ -1,0 +1,55 @@
+title: Accounts
+description: >
+  Accounts are owned by entities and are used to exchange value. Each Account has an 
+  Account Type. Each Account has a currency type. It's worth noting "curency" does not have 
+  to mean government (or crypto) money. For example, Giving Credit recognizes a "social capital" 
+  account which can be used to barter.
+tables:
+  - title: Account
+    name: webapp.finances_account
+    description: >
+      Each Account has exactly one AccountType. Account types can be third party accounts (like Paypal and CashApp) 
+      or account types that are native to the Giving Credit platform.
+    fields: # list of fields in this category
+      - name: id
+        type: Number
+        description: Account ID
+      - name: uuid
+        type: UUID
+        description: Account UUID
+      - name: show_on_profile
+        type: Boolean
+        description: Whether to show this account on an entity's profile.
+      - name: currency
+        type: Text
+        description: Currency type, such as "USD"
+      - name: sum_to_amount
+        type: Numeric
+        description: Total amount that has been transfered into this account
+      - name: sum_from_amount
+        type: Numeric
+        description: Total amount that has been transfered out of this account
+      - name: balance
+        type: Numeric
+        description: Account balance
+      - name: account_type_id
+        type: Numeric
+        description: ID of the account type
+      - name: handle_username
+        private: true
+        type: Text
+        description: >
+          Entity's user handle for this account, if one exists. For example, if this account 
+          is of type “Cash App”, the handle would be a user’s “cashtag”.
+      - name: handle_email
+        private: true
+        type: text
+        description: >
+          Entity's email for this account. For example, if the type is “Paypal”, the user might 
+          provide the email address associated with their Paypal account.
+      - name: handle_phone
+        private: true
+        type: text
+        description: >
+          Entity's phone number for this account. For example, if the type is "Zelle", the user might 
+          provide the phone number associated with their Zelle account.

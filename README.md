@@ -79,26 +79,6 @@ fields:
     private: false
 ```
 
-### Transformed
-
-The `transformed` attribute indicates if a field underwent some form of transformation. For example, if we have household size and the number of people in a household as raw data and we calculate the household's federal poverty line, the new variable would be considered transformed.
-
-Usage:
-
-```yaml
-fields:
-  - name: "Some field name as found in the .csv file"
-    description: "Some description for this field"
-    transformed: false
-```
-
-## Registering your data
-
-Your datasets are registered in `/docs/datadocs.yaml`. If you had the following tow datasets:
-
-- my_dataset.csv
-- some_other_dataset.csv
-
 Your `datadocs.yaml` file might look like:
 
 ```yaml

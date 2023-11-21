@@ -1,10 +1,57 @@
-title: "Partner Organizations"  # name of the dataset
-description: "Entities are the backbone of the Giving Credit data model" # description of the dataset
+title: Partner Organizations
+description: Partners are organizations like nonprofits and credit unions that support people in their community financial activity. For example, an organization might extend loan guarantee credit via a loan guarantee fund to a person.
 tables: # list of categories to place your fields in
-  - title: "Entities" # title of a category
-    name: "entities_entities"
-    description: "Individual entity represtented on Giving Credit" # category description
+  - title: Organization
+    name: "webapp.partners_organization"
+    description: An organization can be a nonprofit, credit union, for-profit, etc. Each organization has one or more Staff, and can have any number of Constituents. Both Staff and Constitutions are People.
     fields: # list of fields in this category
-      - name: "ID" # name of field in the corresponding csv file
-        type: "Number"
-        description: "Unique identifier" # field description
+      - name: id
+        type: Number
+        description: Organiaztion ID
+      - name: entity_id
+        type: Number
+        description: Entity ID for this organization
+      - name: name
+        type: Text
+        description: Name of the organization
+      - name: created_at
+        type: Date
+        description: Datetime the organization was created at
+      - name: updated_at
+        type: Date
+        description: Datetime the organization was updated at
+  - title: Staff
+    name: webapp.partners_staff
+    description: Each organization has one or more Staff members. Staff can manage Partner accounts and Funds.
+    fields: 
+      - name: id
+        type: Number
+        description: Staff ID
+      - name: active
+        type: Boolean
+        description: Whether the staff member is active or not
+      - name: organization_id
+        type: Numeric
+        description: ID for the organization
+      - name: person_id
+        type: Numeric
+        description: ID of the person who is a staff member of this organization
+  - title: Constituent
+    name: webapp.partners_constituent
+    description: Organizations can have any number of constituents. A constituent is a relationship between a person and an organization.
+    fields: 
+      - name: id
+        type: Number
+        description: Constituent ID
+      - name: status
+        type: Text
+        description: Status of this constituent (active, inactive)
+      - name: created_by_id
+        type: Numeric
+        description: Entity ID that created this constituent relationship.
+      - name: organization_id
+        type: Numeric
+        description: Organization ID this constituent is a member of.
+      - name: person_id
+        type: Numeric
+        description: Person ID of the person who is this constituent.

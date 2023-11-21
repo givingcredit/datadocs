@@ -1,29 +1,26 @@
 {% extends "base.html" %}
-{% block title %}{{docTitle}}{% endblock %}
-{% block subheader %}{{docTitle}}{% endblock %}
+{% block title %}{{doc_title}}{% endblock %}
+{% block subheader %}{{doc_title}}{% endblock %}
 {% block search %}
   {{search}}
 {% endblock %}
 {% block Sections %}
-{{Sections}}
+  {{Sections}}
 {% endblock %}
 {% block content %}
 
-<div class="meta-container">
-  <img src="static/images/logo.png" />
-  <div class="meta-title">{{docTitle}}</div>
-</div>
-<div class="row">
-  <div class="col-md-12">
+<div class="">
+  <div class="">
     {% if content %}
-    {{content|safe}}
+    <div class="section">
+      {{content|safe}}
+    </div>
     {% endif %}
     <h1>Sections</h1>
-    <table class="table">
+    <table class="table is-striped">
       <tr>
         <th>Section</th>
         <th>Description</th>
-        <th>Fields</th>
       </tr>
       {% for section in sections %}
       <tr>
@@ -37,7 +34,6 @@
           </a>
         </td>
         <td>{{section.description}}</td>
-        <td><span class="badge">{{section.countFields()}}</span></td>
       </tr>
       {% endfor %}
     </table>

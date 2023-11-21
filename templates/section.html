@@ -14,16 +14,11 @@
 {% endblock %}
 {% block content %}
 
-<div class="meta-container">
-  <div class="meta-title">
+<div class="mt-6 mb-6">
+  <h1 class="title">
     {{section.title}}
-    <div style="text-align: center;">
-      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#toc">
-        Table of contents
-      </button>
-    </div>
-  </div>
-  <div class="meta-description">{{section.description}}</div>
+  </h1>
+  <div class="block has-text-grey is-size-4">{{section.description}}</div>
 </div>
 
 <!-- optional markdown content -->
@@ -31,54 +26,22 @@
 {{content|safe}}
 {% endif %}
 
-<!-- table of contents -->
-<div class="modal fade" id="toc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Table of contents</h4>
-      </div>
-      <div class="modal-body">
-        {% for table in section.categories %}
-          <h3>
-            <a href="#table-{{loop.index}}" class="toc-link scroll-to-location">{{table.title}}</a>
-            <span class="badge">{{table.fields|length}}</span>
-          </h3>
-          <p style="margin-left: 10px;">{{table.description}}</p>
-        {% endfor %}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript">
-// after clicking a table link in the TOC, close the modal
-$("a.toc-link").click(function(){
-  $('#toc').modal('hide')
-});
-</script>
-
 {% for table in section.tables %}
 {% set table_loop = loop %}
-<div class="row table-container">
-  <div class="col-md-3">
+<div class="section box">
+  <div class="">
     <section id="table-{{table_loop.index}}">
       <h2>{{table.title}}</h2>
-      <div class="">
-        <code>{{table.name}}</code>
+      <div class="block">
+        <code class="database-table-name">{{table.name}}</code>
       </div>
-      <p class="table-description">{{table.description}}</p>
+      <div class="mt-6 mb-6 is-size-5 has-text-grey">{{table.description}}</div>
     </section>
   </div>
-  <div class="col-md-9">
-    <table class="table">
+  <div class="">
+    <table class="table is-striped">
       <thead>
         <tr>
-          <th></th>
           <th>Field</th>
           <th>Description</th>
           <th>Type</th>
@@ -89,29 +52,26 @@ $("a.toc-link").click(function(){
         <tr class="field">
           <td>
             <section id="field-{{table_loop.index}}-{{loop.index}}">
-              {% if field.private %} <i class="fa fa-lock" title="Field is private"></i>{% endif %}
-              {% if field.transformed %} <i class="fa fa-edit" title="Field is transformed or calculated"></i>{% endif %}
+              <code>{{field.name}}</code>
+              {% if field.private %} <i class="fa fa-lock mr-2" title="Field is private"></i>{% endif %}
             </section>
-          </td>
-          <td>
-            <code>{{field.name}}</code>
           </td>
           <td>{{field.description}}</td>
           <td>
-            {% if field.dataType == "Boolean" %}
+            {% if field.data_type == "Boolean" %}
               <i class="fa fa-toggle-off" title="Boolean"></i>
-            {% elif field.dataType == "Date" %}
+            {% elif field.data_type == "Date" %}
               <i class="fa fa-calendar" title="Date"></i>
-            {% elif field.dataType == "Text" %}
+            {% elif field.data_type == "Text" %}
               <i class="fa fa-paragraph" title="Text"></i>
-            {% elif field.dataType == "Categorical" %}
+            {% elif field.data_type == "Categorical" %}
               <i class="fa fa-list-ul" title="Text"></i>
-            {% elif field.dataType == "Numeric" %}
+            {% elif field.data_type == "Numeric" %}
               <i class="fa fa-hashtag" title="Numeric"></i>
-            {% elif field.dataType == "JSON" or field.dataType == "YAML" %}
+            {% elif field.data_type == "JSON" or field.data_type == "YAML" %}
               <i class="fa fa-code" title="Code"></i>
             {% endif %}
-              {{field.dataType}}
+              {{field.data_type}}
           </td>
         </tr>
         {% endfor %}

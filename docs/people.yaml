@@ -1,0 +1,37 @@
+title: People
+description: >
+  People are users on Giving Credit. Every person, whether a regular user of Giving Credit or a staff memmber 
+  for a partner organization is represented as a Person.
+tables:
+  - title: Person
+    name: webapp.people_person
+    description: Each person has exactly one entity. A person is a user on the platform, regardless of one’s role (borrower, lender, partner administrator, etc.)
+    fields:
+      - name: ID
+        type: Number
+        description: Person ID
+      - name: UUID
+        type: UUID
+        description: Unique person identifier
+      - name: first_name
+        description: First name
+        type: Text
+        private: true
+      - name: last_name
+        description: Last name
+        type: Text
+        private: true
+      - name: last_login
+        type: Date
+        description: Last time the user logged in
+      - name: locale
+        type: Text
+        description: Two letter language locale
+      - name: timezone
+        type: Text
+        description: User's time zone
+      - name: entity_id
+        type: Numeric
+        description: Entity ID for this user
+
+        

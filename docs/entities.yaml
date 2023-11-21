@@ -1,26 +1,27 @@
-title: "Entities"  # name of the dataset
-description: "Entities are the backbone of the Giving Credit data model" # description of the dataset
-tables: # list of categories to place your fields in
-  - title: "Entities" # title of a category
-    name: "entities_entity"
-    description: "Individual entity represtented on Giving Credit" # category description
-    fields: # list of fields in this category
-      - name: "ID" # name of field in the corresponding csv file
-        type: "Number"
-        description: "Unique identifier" # field description
-      - name: "UUID"
-        type: "UUID"
-        description: "Unique entity identifier"
-      - name: "entity_type"
+title: Entities
+description: Entities are generic objects that represent every person, organization, etc. on the platform. Entities are the backbone of the social credit network. Because people and organizations are both represented as entities, this allows Giving Credit to treat people and organizations equally. For example, just as people can give credit to each other, so too can organizations. This is all made possible by the entity model.
+tables:
+  - title: Entity
+    name: webapp.entities_entity
+    description: Individual entity represtented on Giving Credit # category description
+    fields: 
+      - name: id
+        type: Number
+        description: Unique identifier
+      - name: uuid
+        type: UUID
+        description: Unique entity identifier
+      - name: entity_type
         description: "Name of the entity type: ('person', 'organization', etc.)"
-        type: "Text"
-      - name: "created_at"
-        description: 'Datetime the entity was created'
-        type: "Date"
-      - name: "updated_at"
-        description: 'Datetime the entity was updated'
-        type: "Date"
-      - name: "Visbility"
-        description: "Determines what entities can see this entity's profile (hidden, network, authenicated, public). "
-        type: "Text" # field data type
+        type: Text
+      - name: created_at
+        description: Datetime the entity was created
+        type: Date
+      - name: updated_at
+        description: Datetime the entity was updated
+        type: Date
+      - name: visbility
+        description: "Determines what entities can see this entity's profile (hidden, network, authenicated, public)."
+        type: Text
+
         

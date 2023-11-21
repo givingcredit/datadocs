@@ -1,4 +1,3 @@
-import pandas as pd
 import os, shutil
 from jinja2 import Environment, PackageLoader
 import yaml
@@ -25,7 +24,7 @@ class Section():
         title (String)               Section title
         description (String)         Description
     """
-    def __init__(self, name, title = None, description = None):
+    def __init__(self, title = None, description = None):
         self.title = title
         self.description = description
         self.tables = []
@@ -125,17 +124,6 @@ class Section():
 
         return code
 
-    def countFields(self):
-        """
-        Counts the number of fields in this section.
-        """
-
-        fieldCount = 0
-        for table in self.tables:
-            fieldCount += len(table.fields)
-        return fieldCount
-
-
 class Table():
     """
     A table holds any number of fields in a section
@@ -159,56 +147,18 @@ class Field():
     """
     A field in a section.
     """
-    def __init__(self, name, description=None, private=False, transformed=False, percentNotNA=None):
+    def __init__(self, name, data_type, description, private=False):
         """
         Args:
-            name            String field name in the section
-            description     String field description
-            private         Boolean indicating if a field is private or public
-            transformed     Boolean indicating if a field is raw (False) or has gone
-                            through some transformation process (True).
-            percentNotNA    Numeric field indicating percentage of observations not NA
+            name (String):          Field name in the section
+            data_type (String):     Data type
+            description (String):   Field description
+            private (Boolean):      Boolean indicating if a field is private or public
         """
         self.name = name
         self.description = description
-        self.percentNotNA = percentNotNA
-        self.dataType = None
+        self.data_type = data_type
         self.private = private
-        self.transformed = transformed
-
-    def getDataType(self, df):
-        """
-        Guesses the datatype of the field of a dataframe.
-        Args:
-            df              Pandas dataframe this field is in
-        Return:
-            Returns a string guessing the field's data type.
-        """
-
-        # the datatype map maps pandas data types to user friendly types
-        dataTypeMap = {
-            "object" : "Text",
-            "int64" : "Numeric",
-            "float64" : "Numeric",
-            "bool" : "Boolean",
-            "date" : "Date",
-            "categorical" : "Categorical"
-        }
-
-        # set the data type
-        dataType = dataTypeMap[str(df[self.name].dtype)]
-
-        # look for special cases where we guess a different datatype
-        if "date" in fieldName.lower():
-            dataType = dataTypeMap["date"]
-        # check if a text datatype is actually categorical
-        elif dataType == "Text":
-            # if there are fewer than k unique answers, then guess it's categorical
-            numberOfUniqueAnswers = len(df[self.name].value_counts())
-            if numberOfUniqueAnswers < 20: # TODO: This is kind of a hack, might think of a better solution
-                  dataType = dataTypeMap["categorical"]
-
-        return dataType
 
 def generateSearch(sections):
     """
@@ -258,60 +208,33 @@ if __name__ == "__main__":
 
     # get the data docs settings
     datadocs = yaml.load(open("docs/datadocs.yaml", "r"), Loader=yaml.Loader)
-    showUncategorized = datadocs['show_uncategorized']
-    showPrivate = datadocs['show_private']
 
     # instantiate a list of sections
     sections = []
-    for selected_section in datadocs['sections']:
-        # get the section name from the datadocs file
-        section_name = selected_section['name']
+    for s in datadocs['sections']:
 
         # open the section yaml
-        selected_section = yaml.load(open("docs/" + section_name + ".yaml", "r"), Loader=yaml.Loader)
-
-        section_title = selected_section['title']
-        section_description = selected_section['description']
+        section_yaml = yaml.load(open("docs/" + s['name'] + ".yaml", "r"), Loader=yaml.Loader)
 
         # create a section object
-        section = Section(section_name, section_title, section_description)
+        section = Section(title=section_yaml['title'], description=section_yaml['description'])
         # read the data set as a csv and convert to a data frame
         #df = pd.read_csv("docs/" + sectionFileName, sep=',', header=0, encoding='ISO-8859-1', index_col=None)
 
-        for selected_table in selected_section['tables']:
-            table_title = selected_table['title']
-            table_name = selected_table['name']
-            table_description = None
-            if 'description' in selected_table:
-                table_description = selected_table['description']
+        for t in section_yaml['tables']:
             # create a table object
-            table = Table(table_title, table_name, table_description)
-            if 'fields' in selected_table:
-                for selectedField in selected_table['fields']:
-                    fieldName = selectedField['name']
-                    fieldDescription = selectedField['description']
-                    fieldIsPrivate = False
-                    if 'private' in selectedField:
-                        fieldIsPrivate = selectedField['private']
-                    fieldIsTransformed = False
-                    if 'transformed' in selectedField:
-                        fieldIsTransformed = selectedField['transformed']
+            table = Table(t['title'], t['name'], t['description'])
+            if 'fields' in t:
+                for f in t['fields']:
 
-                    # create a field object only if the field is not private or the
-                    # field is private and the settings indiate we want to display
-                    # private fields.
-                    if showPrivate == True or (showPrivate == False and fieldIsPrivate == False):
-                        field = Field(fieldName, description=fieldDescription, private=fieldIsPrivate, transformed=fieldIsTransformed)
-                        #if "type" not in selectedField:
-                            # the user has not documented a datatype, so let's
-                            # guess what the data type is.
-                        #    field.dataType = field.getDataType(df)
-                        #else:
-                            # Documentation includes a data type, so use that instead
-                        #field.dataType = selectedField['type']
+                    private = False
+                    if 'private' in f:
+                        private = f['private']
 
-                        # add this field to the table
-                        table.addField(field)
+                    field = Field(name=f['name'], description=f['description'], private=private, data_type=f['type'])
+
+                    # add this field to the table
+                    table.addField(field)
 
             # add this table to the section
             section.addTable(table)
@@ -319,12 +242,9 @@ if __name__ == "__main__":
         # add this section to the list of sections
         sections.append(section)
 
-        # determine if we want to add uncategorized field
-        #if showUncategorized:
-        #    section.addUncategorizedFields(df)
-
     # generate search index
     search = generateSearch(sections)
+    open('site/search.json', 'w').write(search)
 
     """
     Render templates
@@ -337,10 +257,10 @@ if __name__ == "__main__":
     file = open('site/index.html', 'w')
 
     # documentation properties
-    docTitle = None
+    doc_title = None
     docDescription = None
     if datadocs['title']:
-        docTitle = datadocs['title']
+        doc_title = datadocs['title']
 
     # check if there is an index.md file in /docs. If there is
     # open it up, convert the markdown contents and pass it along as
@@ -349,7 +269,7 @@ if __name__ == "__main__":
         content = markdown.markdown(open('docs/index.md', 'r').read())
     except:
         content = None
-    file.write(template.render(sections=sections, static="static", home="index.html", docTitle=docTitle,
+    file.write(template.render(sections=sections, static="static", home="index.html", doc_title=doc_title,
         search=search, content=content))
 
     for section in sections:
@@ -365,8 +285,7 @@ if __name__ == "__main__":
             content = None
 
         file.write(template.render(section=section, sections=sections, static="static", home="index.html",
-            docTitle=docTitle,
-            showUncategorized=showUncategorized, search=search, content=content))
+            doc_title=doc_title, search=search, content=content))
 
     # copy static folder (css and images)
     shutil.copytree("static", "site/static")
