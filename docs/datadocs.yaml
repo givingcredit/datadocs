@@ -3,6 +3,7 @@ show_private: true # whether to show fields designated private or not
 sections:
   - name: entities
   - name: people
+  - name: invitations
   - name: partners
   - name: funds
   - name: offers
