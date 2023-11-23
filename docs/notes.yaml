@@ -1,0 +1,84 @@
+title: Note
+description: >
+  A Note is a loan against a line of credit. Every Note must have an associated Credit.
+tables:
+  - title: Note
+    name: webapp.finances_note
+    description: >
+      A Note representing an obligation to repay a lender.
+    fields: # list of fields in this category
+      - name: id
+        type: Number
+        description: Note ID
+      - name: uuid
+        type: UUID
+        description: Note UUID
+      - name: status
+        type: Text
+        description: Note status, such as 'overdue', 'active', 'settled', etc.
+      - name: memo
+        type: Text
+        description: Optional memo explaining loan use
+      - name: creditor_signed_at
+        type: Date
+        description: Datetime the creditor first took an action on this Note.
+      - name: debtor_signed_at
+        type: Date
+        description: Datetime the debtor first took an action on this Note.
+      - name: amount
+        type: Numeric
+        description: Amount of this loan
+      - name: balance
+        type: Numeric
+        description: Balance due on this loan
+      - name: due_date
+        type: Date
+        description: Date the loan is due
+      - name: created_at
+        type: Date
+        description: Datetime the Note was created
+      - name: updated_at
+        type: Date
+        description: Datetime the Note was updated
+      - name: created_by_id
+        type: Numeric
+        description: Entity ID that created this Note
+      - name: credit_id
+        type: Numeric
+        description: Credit associated with this Note
+      - name: creditor_signatory_id
+        type: Numeric
+        description: Entity ID that signed for the creditor
+      - name: debtor_signatory_id
+        type: Numeric
+        description: Entity ID that signed for the debtor
+      - name: outcome_type_id
+        type: Numeric
+        description: Outcome Type for this  Note
+  - title: NoteHistory
+    name: webapp.finances_notehistory
+    description: >
+      The Note History table captures a snapshot of the Note object after
+      each transaction related to this note. The fields here mirror that of Note.
+    fields: # list of fields in this category
+      - name: id
+        type: Number
+        description: Note History ID
+      - name: status
+        type: Text
+        description: Note status
+      - name: amount
+        type: Numeric
+        description: Note amount
+      - name: balance
+        type: Numeric
+        description: Note balance
+      - name: due_date
+        type: Date
+        description: Note due date
+      - name: created_at
+        type: Date
+        description: Datetime this entry was created
+      - name: note_id
+        type: Numeric
+        description: Note ID

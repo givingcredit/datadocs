@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="static/style.css" />
     <title>
   
-    Funds
+    Note
   
 </title>
     
@@ -118,9 +118,9 @@
 
 <div class="mt-6 mb-6">
   <h1 class="title">
-    Funds
+    Note
   </h1>
-  <div class="block has-text-grey is-size-4">Funds are how partner organizations capitalize social credit networks on Giving Credit.  Each Fund is operated by a Partner Organization and has a distinct Fund Type. For example, one  fund might provide loan guarantees while another fund might provide cash transfers.
+  <div class="block has-text-grey is-size-4">A Note is a loan against a line of credit. Every Note must have an associated Credit.
 </div>
 </div>
 
@@ -132,11 +132,12 @@
 <div class="section box">
   <div class="">
     <section id="table-1">
-      <h2>Fund</h2>
+      <h2>Note</h2>
       <div class="block">
-        <code class="database-table-name">webapp.partners_fund</code>
+        <code class="database-table-name">webapp.finances_note</code>
       </div>
-      <div class="mt-6 mb-6 is-size-5 has-text-grey">Each fund has a type. This table defines each type of fund available on the platform.</div>
+      <div class="mt-6 mb-6 is-size-5 has-text-grey">A Note representing an obligation to repay a lender.
+</div>
     </section>
   </div>
   <div class="">
@@ -157,7 +158,7 @@
               
             </section>
           </td>
-          <td>Fund ID</td>
+          <td>Note ID</td>
           <td>
             
               Number
@@ -167,16 +168,14 @@
         <tr class="field">
           <td>
             <section id="field-1-2">
-              <code>name</code>
+              <code>uuid</code>
               
             </section>
           </td>
-          <td>Name of the fund</td>
+          <td>Note UUID</td>
           <td>
             
-              <i class="fa fa-paragraph" title="Text"></i>
-            
-              Text
+              UUID
           </td>
         </tr>
         
@@ -187,7 +186,7 @@
               
             </section>
           </td>
-          <td>Active or inactive</td>
+          <td>Note status, such as 'overdue', 'active', 'settled', etc.</td>
           <td>
             
               <i class="fa fa-paragraph" title="Text"></i>
@@ -199,43 +198,43 @@
         <tr class="field">
           <td>
             <section id="field-1-4">
-              <code>organization_id</code>
+              <code>memo</code>
               
             </section>
           </td>
-          <td>Organization ID that operates this fund</td>
+          <td>Optional memo explaining loan use</td>
           <td>
             
-              <i class="fa fa-hashtag" title="Numeric"></i>
+              <i class="fa fa-paragraph" title="Text"></i>
             
-              Numeric
+              Text
           </td>
         </tr>
         
         <tr class="field">
           <td>
             <section id="field-1-5">
-              <code>created_by_id</code>
+              <code>creditor_signed_at</code>
               
             </section>
           </td>
-          <td>Entity ID that created the fund</td>
+          <td>Datetime the creditor first took an action on this Note.</td>
           <td>
             
-              <i class="fa fa-hashtag" title="Numeric"></i>
+              <i class="fa fa-calendar" title="Date"></i>
             
-              Numeric
+              Date
           </td>
         </tr>
         
         <tr class="field">
           <td>
             <section id="field-1-6">
-              <code>created_at</code>
+              <code>debtor_signed_at</code>
               
             </section>
           </td>
-          <td>Datetime the fund was created at</td>
+          <td>Datetime the debtor first took an action on this Note.</td>
           <td>
             
               <i class="fa fa-calendar" title="Date"></i>
@@ -247,16 +246,160 @@
         <tr class="field">
           <td>
             <section id="field-1-7">
-              <code>updated_at</code>
+              <code>amount</code>
               
             </section>
           </td>
-          <td>Datetime the fund was updated at</td>
+          <td>Amount of this loan</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-8">
+              <code>balance</code>
+              
+            </section>
+          </td>
+          <td>Balance due on this loan</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-9">
+              <code>due_date</code>
+              
+            </section>
+          </td>
+          <td>Date the loan is due</td>
           <td>
             
               <i class="fa fa-calendar" title="Date"></i>
             
               Date
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-10">
+              <code>created_at</code>
+              
+            </section>
+          </td>
+          <td>Datetime the Note was created</td>
+          <td>
+            
+              <i class="fa fa-calendar" title="Date"></i>
+            
+              Date
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-11">
+              <code>updated_at</code>
+              
+            </section>
+          </td>
+          <td>Datetime the Note was updated</td>
+          <td>
+            
+              <i class="fa fa-calendar" title="Date"></i>
+            
+              Date
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-12">
+              <code>created_by_id</code>
+              
+            </section>
+          </td>
+          <td>Entity ID that created this Note</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-13">
+              <code>credit_id</code>
+              
+            </section>
+          </td>
+          <td>Credit associated with this Note</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-14">
+              <code>creditor_signatory_id</code>
+              
+            </section>
+          </td>
+          <td>Entity ID that signed for the creditor</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-15">
+              <code>debtor_signatory_id</code>
+              
+            </section>
+          </td>
+          <td>Entity ID that signed for the debtor</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-16">
+              <code>outcome_type_id</code>
+              
+            </section>
+          </td>
+          <td>Outcome Type for this  Note</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
           </td>
         </tr>
         
@@ -269,11 +412,12 @@
 <div class="section box">
   <div class="">
     <section id="table-2">
-      <h2>Fund Type</h2>
+      <h2>NoteHistory</h2>
       <div class="block">
-        <code class="database-table-name">webapp.partners_fundtype</code>
+        <code class="database-table-name">webapp.finances_notehistory</code>
       </div>
-      <div class="mt-6 mb-6 is-size-5 has-text-grey">Each fund has exactly one Fund Type.</div>
+      <div class="mt-6 mb-6 is-size-5 has-text-grey">The Note History table captures a snapshot of the Note object after each transaction related to this note. The fields here mirror that of Note.
+</div>
     </section>
   </div>
   <div class="">
@@ -294,7 +438,7 @@
               
             </section>
           </td>
-          <td>Fund Type ID</td>
+          <td>Note History ID</td>
           <td>
             
               Number
@@ -304,11 +448,11 @@
         <tr class="field">
           <td>
             <section id="field-2-2">
-              <code>name</code>
+              <code>status</code>
               
             </section>
           </td>
-          <td>Fund type such as "loan_guarantee_fund", "cash_transfer_fund", etc.</td>
+          <td>Note status</td>
           <td>
             
               <i class="fa fa-paragraph" title="Text"></i>
@@ -317,72 +461,14 @@
           </td>
         </tr>
         
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-<div class="section box">
-  <div class="">
-    <section id="table-3">
-      <h2>Fund Member</h2>
-      <div class="block">
-        <code class="database-table-name">webapp.partners_fundmember</code>
-      </div>
-      <div class="mt-6 mb-6 is-size-5 has-text-grey">Each fund can have any number of members. Members are users on the platform who have a relationship with  the fund. A fund membership does not mean the member receives a benefit from the  fund (such as a loan guarantee), but one cannot receive a benefit from the fund  without being a fund member. The FundMember object has a Constituent.  The logic here is that a person is a Constituent of an Organization  and uses various Funds via Fund Membership.
-</div>
-    </section>
-  </div>
-  <div class="">
-    <table class="table is-striped">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>Description</th>
-          <th>Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        
         <tr class="field">
           <td>
-            <section id="field-3-1">
-              <code>id</code>
+            <section id="field-2-3">
+              <code>amount</code>
               
             </section>
           </td>
-          <td>Fund Member ID</td>
-          <td>
-            
-              Number
-          </td>
-        </tr>
-        
-        <tr class="field">
-          <td>
-            <section id="field-3-2">
-              <code>active</code>
-              
-            </section>
-          </td>
-          <td>Whether the member is active with this fund or not. True for active.</td>
-          <td>
-            
-              <i class="fa fa-toggle-off" title="Boolean"></i>
-            
-              Boolean
-          </td>
-        </tr>
-        
-        <tr class="field">
-          <td>
-            <section id="field-3-3">
-              <code>constituent_id</code>
-              
-            </section>
-          </td>
-          <td>ID for the constituent.</td>
+          <td>Note amount</td>
           <td>
             
               <i class="fa fa-hashtag" title="Numeric"></i>
@@ -393,12 +479,12 @@
         
         <tr class="field">
           <td>
-            <section id="field-3-4">
-              <code>created_by_id</code>
+            <section id="field-2-4">
+              <code>balance</code>
               
             </section>
           </td>
-          <td>Entity that created the fund member</td>
+          <td>Note balance</td>
           <td>
             
               <i class="fa fa-hashtag" title="Numeric"></i>
@@ -409,12 +495,44 @@
         
         <tr class="field">
           <td>
-            <section id="field-3-5">
-              <code>fund_id</code>
+            <section id="field-2-5">
+              <code>due_date</code>
               
             </section>
           </td>
-          <td>Fund ID this constituent is a member of</td>
+          <td>Note due date</td>
+          <td>
+            
+              <i class="fa fa-calendar" title="Date"></i>
+            
+              Date
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-6">
+              <code>created_at</code>
+              
+            </section>
+          </td>
+          <td>Datetime this entry was created</td>
+          <td>
+            
+              <i class="fa fa-calendar" title="Date"></i>
+            
+              Date
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-7">
+              <code>note_id</code>
+              
+            </section>
+          </td>
+          <td>Note ID</td>
           <td>
             
               <i class="fa fa-hashtag" title="Numeric"></i>

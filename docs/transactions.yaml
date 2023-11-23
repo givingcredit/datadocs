@@ -1,0 +1,52 @@
+title: Transactions
+description: >
+  Transactions are payments from one Account to another. Each transaction must be between two accounts 
+  that are of the same Account Type.
+tables:
+  - title: Transaction
+    name: webapp.finances_transaction
+    description: >
+      Transaction between two accounts.
+    fields: # list of fields in this category
+      - name: id
+        type: Number
+        description: Transaction ID
+      - name: uuid
+        type: UUID
+        description: Transaction UUID
+      - name: amount
+        type: Numeric
+        description: Transaction amount
+      - name: memo
+        type: Text
+        description: Optional memo line for the transaction.
+      - name: credit_balance_effect
+        type: Text
+        description: Whether the transaction has an 'increase' or 'decrease' effect on an associated Credit balance.
+      - name: note_balance_effect
+        type: Text
+        description: Whether the transaction has an 'increase' or 'decrease' effect on an associated Note balance.
+      - name: ask_balance_effect
+        type: Text
+        description: Whether the transaction has an 'increase' or 'decrease' effect on an associated Ask balance.
+      - name: transaction_type
+        type: Text
+        description: Transaction type, like 'note_payment' for making a Note payment, or 'note_fund' for funding a Note.
+      - name: ask_id
+        type: Numeric
+        description: Associated Ask, if there is one.
+      - name: credit_id
+        type: Numeric
+        description: Associated Credit, if there is one.
+      - name: credit_id
+        type: Numeric
+        description: Associated Note, if there is one.
+      - name: created_by_id
+        type: Numeric
+        description: Entity ID that created this transaction
+      - name: from_account_id
+        type: Numeric
+        description: ID of the account sending this transaction
+      - name: to_account_id
+        type: Numeric
+        description: ID of the account receiving this transaction

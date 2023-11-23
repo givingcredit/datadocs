@@ -42,3 +42,30 @@ tables:
       - name: currency
         type: Text
         description: Currency type, such as "USD"
+  - title: CreditHistory
+    name: webapp.finances_credithistory
+    description: >
+      The Credit History table captures a snapshot of the Credit object after
+      each transaction related to this credit. The fields here mirror that of Credit.
+    fields: # list of fields in this category
+      - name: id
+        type: Number
+        description: Credit History ID
+      - name: status
+        type: Text
+        description: Credit status
+      - name: amount
+        type: Numeric
+        description: Credit amount
+      - name: balance
+        type: Numeric
+        description: Credit balance
+      - name: available
+        type: Numeric
+        description: Credit available
+      - name: created_at
+        type: Date
+        description: Datetime this entry was created
+      - name: credit_id
+        type: Numeric
+        description: Credit ID

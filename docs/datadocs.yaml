@@ -8,4 +8,6 @@ sections:
   - name: offers
   - name: accounts
   - name: asks
-  - name: credit
+  - name: credits
+  - name: notes
+  - name: transactions
