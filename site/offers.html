@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="static/style.css" />
     <title>
   
-    Requests
+    Offers
   
 </title>
     
@@ -110,9 +110,9 @@
 
 <div class="mt-6 mb-6">
   <h1 class="title">
-    Requests
+    Offers
   </h1>
-  <div class="block has-text-grey is-size-4">On Giving Credit, users can make requests of others through 'Asks'. An Ask can be a requst for a loan or to request compensation on an insurance claim.
+  <div class="block has-text-grey is-size-4">Offers are provided by partner organizations to people on Giving Credit. Users can choose to signup for an Offer. Each  Offer Type has different purposes and functions. For example, an offer might proivde a user a cash transfer if they  opt-in, or might be used by a partner organization to get people to signup for Giving Credit and become a  Constituent of their organization.
 </div>
 </div>
 
@@ -124,12 +124,11 @@
 <div class="section box">
   <div class="">
     <section id="table-1">
-      <h2>Ask</h2>
+      <h2>Offer</h2>
       <div class="block">
-        <code class="database-table-name">webapp.finances_ask</code>
+        <code class="database-table-name">webapp.partners_offer</code>
       </div>
-      <div class="mt-6 mb-6 is-size-5 has-text-grey">An Ask represents a request from one entity to another for a specific thing.
-</div>
+      <div class="mt-6 mb-6 is-size-5 has-text-grey">Offer provided by an Organization.</div>
     </section>
   </div>
   <div class="">
@@ -150,7 +149,7 @@
               
             </section>
           </td>
-          <td>Ask ID</td>
+          <td>Offer ID</td>
           <td>
             
               Number
@@ -160,25 +159,28 @@
         <tr class="field">
           <td>
             <section id="field-1-2">
-              <code>uuid</code>
+              <code>amount</code>
               
             </section>
           </td>
-          <td>Ask UUID</td>
+          <td>If there is a financial action associated with this Offer, this field  shows the amount. If an offer has an amount, it must be tied to a Fund. The  meaning of the amount then depends on the Fund Type.
+</td>
           <td>
             
-              UUID
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
           </td>
         </tr>
         
         <tr class="field">
           <td>
             <section id="field-1-3">
-              <code>memo</code>
-               <i class="fa fa-lock mr-2" title="Field is private"></i>
+              <code>status</code>
+              
             </section>
           </td>
-          <td>Memo along with this Ask</td>
+          <td>Active or inactive</td>
           <td>
             
               <i class="fa fa-paragraph" title="Text"></i>
@@ -190,59 +192,59 @@
         <tr class="field">
           <td>
             <section id="field-1-4">
-              <code>amount</code>
+              <code>locale</code>
               
             </section>
           </td>
-          <td>Amount of the Ask</td>
+          <td>Language locale for this offer</td>
           <td>
             
-              <i class="fa fa-hashtag" title="Numeric"></i>
+              <i class="fa fa-paragraph" title="Text"></i>
             
-              Numeric
+              Text
           </td>
         </tr>
         
         <tr class="field">
           <td>
             <section id="field-1-5">
-              <code>balance</code>
+              <code>title</code>
               
             </section>
           </td>
-          <td>Amount of the Ask that has not been fullfilled</td>
+          <td>Offer title</td>
           <td>
             
-              <i class="fa fa-hashtag" title="Numeric"></i>
+              <i class="fa fa-paragraph" title="Text"></i>
             
-              Numeric
+              Text
           </td>
         </tr>
         
         <tr class="field">
           <td>
             <section id="field-1-6">
-              <code>due_date</code>
+              <code>banner</code>
               
             </section>
           </td>
-          <td>When the Ask is due, the meaning can change based on the ask type.</td>
+          <td>Image banner for the offer</td>
           <td>
             
-              <i class="fa fa-calendar" title="Date"></i>
+              <i class="fa fa-paragraph" title="Text"></i>
             
-              Date
+              Text
           </td>
         </tr>
         
         <tr class="field">
           <td>
             <section id="field-1-7">
-              <code>visibility</code>
+              <code>content</code>
               
             </section>
           </td>
-          <td>Who can see this ask, such as 'public', 'network', or 'individual'</td>
+          <td>HTML content to display with the offer</td>
           <td>
             
               <i class="fa fa-paragraph" title="Text"></i>
@@ -254,11 +256,11 @@
         <tr class="field">
           <td>
             <section id="field-1-8">
-              <code>status</code>
+              <code>slug</code>
               
             </section>
           </td>
-          <td>Status of the ask, such as 'requestd', 'settled', or 'cancelled'</td>
+          <td>URL slug for the offer</td>
           <td>
             
               <i class="fa fa-paragraph" title="Text"></i>
@@ -270,27 +272,27 @@
         <tr class="field">
           <td>
             <section id="field-1-9">
-              <code>requested_by_id</code>
+              <code>visibility</code>
               
             </section>
           </td>
-          <td>Entity that made the request</td>
+          <td>Visibility for the offer (public, authenticated, etc.)</td>
           <td>
             
-              <i class="fa fa-hashtag" title="Numeric"></i>
+              <i class="fa fa-paragraph" title="Text"></i>
             
-              Numeric
+              Text
           </td>
         </tr>
         
         <tr class="field">
           <td>
             <section id="field-1-10">
-              <code>requested_of_id</code>
+              <code>created_by_id</code>
               
             </section>
           </td>
-          <td>Entity that is being asked</td>
+          <td>Entity that created the offer</td>
           <td>
             
               <i class="fa fa-hashtag" title="Numeric"></i>
@@ -302,11 +304,11 @@
         <tr class="field">
           <td>
             <section id="field-1-11">
-              <code>outcome_type_id</code>
+              <code>fund_id</code>
               
             </section>
           </td>
-          <td>Outcome Type ID, if one is associated with this ask</td>
+          <td>Fund this offer is attached to. Can be null.</td>
           <td>
             
               <i class="fa fa-hashtag" title="Numeric"></i>
@@ -318,11 +320,239 @@
         <tr class="field">
           <td>
             <section id="field-1-12">
-              <code>credit_id</code>
+              <code>offer_type_id</code>
               
             </section>
           </td>
-          <td>Credit ID, if this ask is being made on a line of credit</td>
+          <td>Offer Type ID</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-13">
+              <code>organization_id</code>
+              
+            </section>
+          </td>
+          <td>ID of the organization that owns this offer.</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-14">
+              <code>call_to_action</code>
+              
+            </section>
+          </td>
+          <td>Text on the call-to-action button</td>
+          <td>
+            
+              <i class="fa fa-paragraph" title="Text"></i>
+            
+              Text
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="section box">
+  <div class="">
+    <section id="table-2">
+      <h2>Offer Type</h2>
+      <div class="block">
+        <code class="database-table-name">webapp.partners_offertype</code>
+      </div>
+      <div class="mt-6 mb-6 is-size-5 has-text-grey">Type of an offer</div>
+    </section>
+  </div>
+  <div class="">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-1">
+              <code>id</code>
+              
+            </section>
+          </td>
+          <td>Offer Type ID</td>
+          <td>
+            
+              Number
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-2">
+              <code>name</code>
+              
+            </section>
+          </td>
+          <td>Name for this offer type</td>
+          <td>
+            
+              <i class="fa fa-paragraph" title="Text"></i>
+            
+              Text
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-3">
+              <code>display_name</code>
+              
+            </section>
+          </td>
+          <td>Display name for this offer type</td>
+          <td>
+            
+              <i class="fa fa-paragraph" title="Text"></i>
+            
+              Text
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-4">
+              <code>active</code>
+              
+            </section>
+          </td>
+          <td>Whether this offer type is active</td>
+          <td>
+            
+              <i class="fa fa-toggle-off" title="Boolean"></i>
+            
+              Boolean
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-5">
+              <code>fund_type_id</code>
+              
+            </section>
+          </td>
+          <td>Type of Fund this offer must be attached to, if any. For example,  an offer for loan guarantees must be attached to a loan guarantee fund.
+</td>
+          <td>
+            
+              <i class="fa fa-paragraph" title="Text"></i>
+            
+              Text
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="section box">
+  <div class="">
+    <section id="table-3">
+      <h2>Offer Signup</h2>
+      <div class="block">
+        <code class="database-table-name">webapp.partners_offersignup</code>
+      </div>
+      <div class="mt-6 mb-6 is-size-5 has-text-grey">Captures signups for an offer.
+</div>
+    </section>
+  </div>
+  <div class="">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr class="field">
+          <td>
+            <section id="field-3-1">
+              <code>id</code>
+              
+            </section>
+          </td>
+          <td>Offer signup ID</td>
+          <td>
+            
+              Number
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-3-2">
+              <code>created_at</code>
+              
+            </section>
+          </td>
+          <td>Date the signup was created at</td>
+          <td>
+            
+              <i class="fa fa-calendar" title="Date"></i>
+            
+              Date
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-3-3">
+              <code>offer_id</code>
+              
+            </section>
+          </td>
+          <td>Offer ID the user signed up for</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-3-4">
+              <code>person_id</code>
+              
+            </section>
+          </td>
+          <td>Person ID that signed up for the offer</td>
           <td>
             
               <i class="fa fa-hashtag" title="Numeric"></i>

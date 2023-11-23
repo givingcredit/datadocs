@@ -1,0 +1,94 @@
+title: Offers
+description: >
+  Offers are provided by partner organizations to people on Giving Credit. Users can choose to signup for an Offer. Each 
+  Offer Type has different purposes and functions. For example, an offer might proivde a user a cash transfer if they 
+  opt-in, or might be used by a partner organization to get people to signup for Giving Credit and become a 
+  Constituent of their organization.
+tables: # list of categories to place your fields in
+  - title: Offer
+    name: webapp.partners_offer
+    description: Offer provided by an Organization.
+    fields: # list of fields in this category
+      - name: id
+        type: Number
+        description: Offer ID
+      - name: amount
+        type: Numeric
+        description: >
+          If there is a financial action associated with this Offer, this field 
+          shows the amount. If an offer has an amount, it must be tied to a Fund. The 
+          meaning of the amount then depends on the Fund Type.
+      - name: status
+        type: Text
+        description: Active or inactive
+      - name: locale
+        type: Text
+        description: Language locale for this offer
+      - name: title
+        type: Text
+        description: Offer title
+      - name: banner
+        type: Text
+        description: Image banner for the offer
+      - name: content
+        type: Text
+        description: HTML content to display with the offer
+      - name: slug
+        type: Text
+        description: URL slug for the offer
+      - name: visibility
+        type: Text
+        description: Visibility for the offer (public, authenticated, etc.)
+      - name: created_by_id
+        type: Numeric
+        description: Entity that created the offer
+      - name: fund_id
+        type: Numeric
+        description: Fund this offer is attached to. Can be null.
+      - name: offer_type_id
+        type: Numeric
+        description: Offer Type ID
+      - name: organization_id
+        type: Numeric
+        description: ID of the organization that owns this offer.
+      - name: call_to_action
+        type: Text
+        description: Text on the call-to-action button
+  - title: Offer Type
+    name: webapp.partners_offertype
+    description: Type of an offer
+    fields: 
+      - name: id
+        type: Number
+        description: Offer Type ID
+      - name: name
+        type: Text
+        description: Name for this offer type
+      - name: display_name
+        type: Text
+        description: Display name for this offer type
+      - name: active
+        type: Boolean
+        description: Whether this offer type is active
+      - name: fund_type_id
+        type: Text
+        description: > 
+          Type of Fund this offer must be attached to, if any. For example, 
+          an offer for loan guarantees must be attached to a loan guarantee fund.
+  - title: Offer Signup
+    name: webapp.partners_offersignup
+    description: > 
+      Captures signups for an offer.
+    fields: 
+      - name: id
+        type: Number
+        description: Offer signup ID
+      - name: created_at
+        type: Date
+        description: Date the signup was created at
+      - name: offer_id
+        type: Numeric
+        description: Offer ID the user signed up for
+      - name: person_id
+        type: Numeric
+        description: Person ID that signed up for the offer

@@ -5,5 +5,7 @@ sections:
   - name: people
   - name: partners
   - name: funds
+  - name: offers
   - name: accounts
   - name: asks
+  - name: credit

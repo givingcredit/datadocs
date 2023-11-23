@@ -1,0 +1,44 @@
+title: Credit
+description: >
+  Credit is extended between two entities and has an amount, balance, and credit type. Credit is the backbone of 
+  Giving Credit's social credit network. The most prominent Credit Type on the platform is "social_credit".
+tables:
+  - title: Credit
+    name: webapp.finances_credit
+    description: >
+      Credit represnts an agreemenet from one entity to another to extend a certain amount of a form of currency to another 
+      when needed and/or certain conditions are met.
+    fields: # list of fields in this category
+      - name: id
+        type: Number
+        description: Credit ID
+      - name: uuid
+        type: UUID
+        description: Credit UUID
+      - name: creditor_id
+        type: Numeric
+        description: Entity that is extending the credit
+      - name: debtor_id
+        type: Numeric
+        description: Entity that is receiving the credit
+      - name: created_by_id
+        type: Numeric
+        description: Entity that created the line of credit
+      - name: credit_type
+        type: Text
+        description: Credit type, such as 'social_credit' or 'loan_guarantee'
+      - name: status
+        type: Text
+        description: Active or inactive
+      - name: amount
+        type: Numeric
+        description: Total amount of the line of credit
+      - name: balance
+        type: Numeric
+        description: Credit amount that is being used
+      - name: available
+        type: Numeric
+        description: Credit amount that is available on the line of credit
+      - name: currency
+        type: Text
+        description: Currency type, such as "USD"

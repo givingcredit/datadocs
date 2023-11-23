@@ -95,3 +95,38 @@ tables:
       - name: money
         type: Boolean
         description: Whether this account type represents money or not
+  - title: AccountLedger
+    name: webapp.finances_accountledger
+    description: >
+      The Account Ledger keeps a record of all changes to an account per transaction.
+    fields: # list of fields in this category
+      - name: id
+        type: Numeric
+        description: Account Ledger ID
+      - name: UUID
+        type: UUID
+        description: Account Ledger UUID
+      - name: to_amount
+        type: Numeric
+        description: Amount that came into the account in this transaction
+      - name: from_amount
+        type: Numeric
+        description: Amount that left this account in this transaciton
+      - name: sum_to_amount
+        type: Numeric
+        description: Sum of all transactions into this account
+      - name: sum_from_amount
+        type: Numeric
+        description: Sum of all transactions from this account
+      - name: balance
+        type: Numeric
+        description: Account balance
+      - name: created_at
+        type: Date
+        description: Date the ledger entry was created
+      - name: account_id
+        type: Numeric
+        description: Account ID
+      - name: transaction_id
+        type: Numeric
+        description: Transaction for this ledger update

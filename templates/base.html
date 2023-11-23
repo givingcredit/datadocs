@@ -54,7 +54,7 @@
           search(e) {
             console.log("search: " + e.target.value)
           }}'>
-          <input type="input" @keydown="search" class="input is-normal is-rounded" id="search-nav" placeholder="Search" />
+          <input type="input" @keyup="search" class="input is-normal is-rounded" id="search-nav" placeholder="Search" />
         </div>
 
       </div>
@@ -62,7 +62,7 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a href="https://givingcredit.org" class="button" style="color: #555; background-color: #FEBF58;">
+            <a href="https://about.givingcredit.org" class="button" style="color: #555; background-color: #FEBF58;">
               <strong>Back to main site</strong>
             </a>
           </div>
