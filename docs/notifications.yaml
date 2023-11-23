@@ -1,0 +1,175 @@
+title: Notifications
+description: >
+  Notifications are sent to entities to inform them of other entities' actions or 
+  other information they need access to. Notifications are separated from how 
+  they are delivered (i.e. 'email', 'Whatsapp', etc.).
+tables:
+  - title: Notification
+    name: webapp.notifications_notification
+    description: >
+      Notification sent to an entity.
+    fields: 
+      - name: id
+        type: Number
+        description: Notification ID
+      - name: uuid
+        type: UUID
+        description: Unique notifications identifier
+      - name: title
+        type: Text
+        description: Title of the notification
+      - name: message
+        type: Text
+        description: Message body for this notification
+      - name: topic
+        type: Text
+        description: Topic for this notification, such as 'note', 'credit', etc.
+      - name: locale
+        type: Text
+        description: Language locale the notification is written in
+      - name: recipient_id
+        type: Numeric
+        description: Entity ID for the entity receiving the notification
+      - name: created_at
+        type: Date
+        description: Datetitme the notification was created at
+      - name: updated_at
+        type: Date
+        description: Datetitme the notification was updated at
+      - name: sender_id
+        type: Numeric
+        description: Entity ID that sent the notification
+      - name: reminder_id
+        type: Numeric
+        description: Reminder ID for this notification, if one exists
+      - name: read
+        type: Boolean
+        description: Whether the notification has been read by the recipient or not
+      - name: url
+        type: Text
+        description: URL attached to this notification, such as sending a user to view a Note.
+  - title: Channel
+    name: webapp.notifications_channel
+    description: Channel for notification delivery
+    fields: 
+      - name: id
+        type: Numeric
+        description: Channel ID
+      - name: uuid
+        type: UUID
+        description: Unique channel identifier
+      - name: active
+        type: Boolean
+        description: Whether the channel is active or not
+      - name: verified
+        type: Boolean
+        description: >
+          Whether the channel has been verified, such as clicking a verification 
+          link for an email channel type.
+      - name: username
+        type: Text
+        description: Username for this channel, if applicable
+      - name: email
+        type: Text
+        description: Email for this channel, if applicable
+      - name: phone
+        type: Text
+        description: Phone number for this channel, if applicable
+      - name: channel_type_id
+        type: Numeric
+        description: Channel Type ID, this defines the channel type
+      - name: entity_id
+        type: Numeric
+        description: Entity that owns this channel
+  - title: Channel Type
+    name: webapp.notifications_channeltype
+    description: Channel Type, each Channel has a type, such as 'Email', or 'Whatsapp'
+    fields: 
+      - name: id
+        type: Numeric
+        description: Channel Type ID
+      - name: name
+        type: Text
+        description: Channel Type name
+      - name: display_name
+        type: Text
+        description: Channel Type display name
+      - name: username
+        type: Boolean
+        description: Whether this channel type has a username property
+      - name: phone
+        type: Boolean
+        description: Whether this channel type has a phone number property
+      - name: email
+        type: Boolean
+        description: Whether this channel type has an email property
+      - name: html
+        type: Boolean
+        description: Whether to send messages as HTTML content (true) or plain text (false)
+  - title: Delivery
+    name: webapp.notifications_delivery
+    description: A delivery is when a notification is sent via a channel, such as via email.
+    fields: 
+      - name: id
+        type: Numeric
+        description: Delivery ID
+      - name: uuid
+        type: UUID
+        description: Delivery UUID
+      - name: title
+        type: Text
+        description: Title of the notification
+      - name: message
+        type: Text
+        description: Message body for this notification
+      - name: status
+        type: Text
+        description: Status, such as 'sent'
+      - name: locale
+        type: Text
+        description: Langauge locale for the notification
+      - name: response
+        type: JSON
+        description: JSON response from API call to send the notification
+      - name: channel_id
+        type: Numeric
+        description: Channel for this delivery
+      - name: notification_id
+        type: Numeric
+        description: Notification being sent via this Delivery object
+      - name: created_at
+        type: Date
+        description: Datetitme the Delivery was created at
+      - name: updated_at
+        type: Date
+        description: Datetitme the Delivery was updated at
+  - title: Reminder
+    name: webapp.notifications_reminder
+    description: >
+      Reminders let entities know when they need to take a 
+      certain action, such as a loan being due
+    fields: 
+      - name: id
+        type: Numeric
+        description: Reminder ID
+      - name: remind_ond
+        type: Date
+        description: Date to remind on
+      - name: reminder_type
+        type: Text
+        description: Reminder type, such as 'note_due'
+      - name: status
+        type: Text
+        description: Status, such as 'notified', 'dismissed', etc.
+      - name: entity_id
+        type: Numeric
+        description: Entity to remind
+      - name: note_id
+        type: Numeric
+        description: Note this reminder is attached to, if one exists
+      - name: created_at
+        type: Date
+        description: Datetitme the Reminder was created at
+      - name: updated_at
+        type: Date
+        description: Datetitme the Reminder was updated at

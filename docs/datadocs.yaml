@@ -4,6 +4,7 @@ sections:
   - name: entities
   - name: people
   - name: invitations
+  - name: notifications
   - name: partners
   - name: funds
   - name: offers
