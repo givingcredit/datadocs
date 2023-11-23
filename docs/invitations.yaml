@@ -1,0 +1,54 @@
+title: Invitation
+description: >
+  Invitations are used to invite others, users or non-users, to recieve a 
+  specified benefit based on the Invitation Type. If someone clicks an invitation 
+  and does not have an account, they are first prompted to join Giving Credit.
+tables:
+  - title: Invitation
+    name: webapp.invitations_invitation
+    description: >
+      Invitation from an entity for another individual (registered on Giving Credit or not).
+    fields: 
+      - name: id
+        type: Number
+        description: Invitation ID
+      - name: uuid
+        type: UUID
+        description: Unique invitation identifier
+      - name: invitee_name
+        type: Text
+        description: Name of the person being invited
+      - name: code
+        type: Text
+        description: Six digit alphanumeric code used to consume the invitation
+      - name: status
+        type: Text
+        description: Status of the invitation, such as 'active', 'consumed', 'revoked'.
+      - name: currency
+        type: Text
+        description: Currency for the associated financial action, if there is one
+      - name: amount
+        type: Numeric
+        description: Amount for the invitation financial transaction, if there is one
+      - name: created_at
+        type: Date
+        description: Datetitme the invitation was created at
+      - name: updated_at
+        type: Date
+        description: Datetitme the invitation was updated at
+      - name: consumed_by_id
+        type: Numeric
+        description: Entity ID that consumed this invitation, default null
+      - name: created_by_id
+        type: Numeric
+        description: Entity ID that created the invitation
+      - name: inviter_id
+        type: Numeric
+        description: Entity ID the invitation is coming from
+      - name: credit_id
+        type: Date
+        description: >
+          Credit associated with this invitation. For example, if this invitation extended 
+          social credit to a new user, the Credit ID would be populated here.
+
+        
