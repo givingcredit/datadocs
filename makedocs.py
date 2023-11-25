@@ -16,6 +16,15 @@ class FieldError(Exception):
         self.value = "%s field in the %s section (is the %s field missing?)" % (self.field, self.section, self.field)
     def __str__(self):
         return repr(self.field)
+    
+class Group():
+    def __init__(self, title, description):
+        self.title = title
+        self.description = description
+        self.sections = []
+
+    def add_section(self, section):
+        self.sections.append(section)
 
 class Section():
     """
@@ -122,6 +131,22 @@ class Section():
             code += "]"
 
         return code
+    
+    def render(self, groups):
+        env = Environment(loader=PackageLoader('makedocs', 'templates'))
+        template = env.get_template('section.html')
+        file = open('site/%s' % (self.getHtmlName()), 'w')
+
+        # check if there is an [file_name].md file in /docs. If there is
+        # open it up, convert the markdown contents and pass it along as
+        # content
+        try:
+            content = markdown.markdown(open('docs/' + self.name + '.md', 'r').read())
+        except:
+            content = None
+
+        file.write(template.render(section=self, static="static", home="index.html",
+            content=content, groups=groups))
 
 class Table():
     """
@@ -208,42 +233,44 @@ if __name__ == "__main__":
     # get the data docs settings
     datadocs = yaml.load(open("docs/datadocs.yaml", "r"), Loader=yaml.Loader)
 
-    # instantiate a list of sections
-    sections = []
-    for s in datadocs['sections']:
+    groups = []
+    for g in datadocs['groups']:
+        group = Group(title=g['title'], description=g['description'])
 
-        # open the section yaml
-        section_yaml = yaml.load(open("docs/" + s['name'] + ".yaml", "r"), Loader=yaml.Loader)
 
-        # create a section object
-        section = Section(name=s['name'], title=section_yaml['title'], description=section_yaml['description'])
-        # read the data set as a csv and convert to a data frame
-        #df = pd.read_csv("docs/" + sectionFileName, sep=',', header=0, encoding='ISO-8859-1', index_col=None)
+        for s in g['sections']:
 
-        for t in section_yaml['tables']:
-            # create a table object
-            table = Table(t['title'], t['name'], t['description'])
-            if 'fields' in t:
-                for f in t['fields']:
+            # open the section yaml
+            section_yaml = yaml.load(open("docs/" + s + ".yaml", "r"), Loader=yaml.Loader)
 
-                    private = False
-                    if 'private' in f:
-                        private = f['private']
+            # create a section object
+            section = Section(name=s, title=section_yaml['title'], description=section_yaml['description'])
 
-                    field = Field(name=f['name'], description=f['description'], private=private, data_type=f['type'])
+            for t in section_yaml['tables']:
+                # create a table object
+                table = Table(t['title'], t['name'], t['description'])
+                if 'fields' in t:
+                    for f in t['fields']:
 
-                    # add this field to the table
-                    table.addField(field)
+                        private = False
+                        if 'private' in f:
+                            private = f['private']
 
-            # add this table to the section
-            section.addTable(table)
+                        field = Field(name=f['name'], description=f['description'], private=private, data_type=f['type'])
 
-        # add this section to the list of sections
-        sections.append(section)
+                        # add this field to the table
+                        table.addField(field)
+
+                # add this table to the section
+                section.addTable(table)
+
+            group.add_section(section)
+        
+        groups.append(group)
 
     # generate search index
-    search = generateSearch(sections)
-    open('site/search.json', 'w').write(search)
+    #search = generateSearch(sections)
+    #open('site/search.json', 'w').write(search)
 
     """
     Render templates
@@ -255,11 +282,10 @@ if __name__ == "__main__":
     template = env.get_template('home.html')
     file = open('site/index.html', 'w')
 
-    # documentation properties
-    doc_title = None
-    docDescription = None
-    if datadocs['title']:
-        doc_title = datadocs['title']
+    # render sections
+    for group in groups:
+        for section in group.sections:
+            section.render(groups)
 
     # check if there is an index.md file in /docs. If there is
     # open it up, convert the markdown contents and pass it along as
@@ -268,23 +294,8 @@ if __name__ == "__main__":
         content = markdown.markdown(open('docs/index.md', 'r').read())
     except:
         content = None
-    file.write(template.render(sections=sections, static="static", home="index.html", doc_title=doc_title,
-        search=search, content=content))
+    file.write(template.render(groups=groups, static="static", home="index.html", content=content))
 
-    for section in sections:
-        template = env.get_template('section.html')
-        file = open('site/%s' % (section.getHtmlName()), 'w')
-
-        # check if there is an [file_name].md file in /docs. If there is
-        # open it up, convert the markdown contents and pass it along as
-        # content
-        try:
-            content = markdown.markdown(open('docs/' + section.name + '.md', 'r').read())
-        except:
-            content = None
-
-        file.write(template.render(section=section, sections=sections, static="static", home="index.html",
-            doc_title=doc_title, search=search, content=content))
 
     # copy static folder (css and images)
     shutil.copytree("static", "site/static")

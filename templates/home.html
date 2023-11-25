@@ -10,33 +10,33 @@
 {% block content %}
 
 <div class="">
-  <div class="">
-    {% if content %}
-    <div class="section">
+  <div class="block mt-6 mb-6">
+
       {{content|safe}}
-    </div>
-    {% endif %}
-    <h1>Sections</h1>
-    <table class="table is-striped">
-      <tr>
-        <th>Section</th>
-        <th>Description</th>
-      </tr>
-      {% for section in sections %}
-      <tr>
-        <td>
-          <a href="{{section.getHtmlName()}}">
-            {% if section.title %}
-            {{section.title}}
-            {% else %}
-            {{section.name}}
-            {% endif %}
-          </a>
-        </td>
-        <td>{{section.description}}</td>
-      </tr>
-      {% endfor %}
-    </table>
+    
   </div>
+
+  {% for group in groups %}
+  <div class="box">
+    <h2 class="title">{{group.title}}</h2>
+    <p>
+      {{group.description}}
+    </p>
+    <ul>
+    {% for section in group.sections %}
+      <li>
+        <a href="{{section.getHtmlName()}}">
+          {% if section.title %}
+          {{section.title}}
+          {% else %}
+          {{section.name}}
+          {% endif %}
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+
 </div>
 {% endblock %}

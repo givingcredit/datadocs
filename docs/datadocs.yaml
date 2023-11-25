@@ -1,15 +1,23 @@
-title: Data Dictionary # title for the documentation overall
 show_private: true # whether to show fields designated private or not
-sections:
-  - name: entities
-  - name: people
-  - name: invitations
-  - name: notifications
-  - name: partners
-  - name: funds
-  - name: offers
-  - name: accounts
-  - name: asks
-  - name: credits
-  - name: notes
-  - name: transactions
+groups:
+  - title: Entities and People
+    description: Entities are the core object on Giving Credit. Each person is represented as an entity.
+    sections:
+      - entities
+      - people
+      - invitations
+      - notifications
+  - title: Partners
+    description: Partner organizations capitalize social credit networks through Funds on Giving Credit.
+    sections:
+      - organizations
+      - funds
+      - offers
+  - title: Financials
+    description: Accounts, credits, loans, and transactions are how people and organizations interact with and support each other.
+    sections:
+      - accounts
+      - asks
+      - credits
+      - notes
+      - transactions

@@ -32,21 +32,24 @@
           {{doc_title}}
         </a>
   
+        {% for group in groups %}
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
-            Sections
+            {{group.title}}
           </a>
         
   
           <div class="navbar-dropdown">
-            {% for section in sections %}
+            {% for section in group.sections %}
               <a href="{{section.getHtmlName()}}" class="navbar-item">
                 {{section.title}}
               </a>
             {% endfor %}
           </div>
         </div>
+        {% endfor %}
 
+        <!--
         <div class="navbar-item"
           x-data='{
           search_index: {{search|safe|tojson}},
@@ -56,6 +59,7 @@
           }}'>
           <input type="input" @keyup="search" class="input is-normal is-rounded" id="search-nav" placeholder="Search" />
         </div>
+        -->
 
       </div>
 
