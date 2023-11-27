@@ -2,11 +2,11 @@ title: Entities
 description: Entities are generic objects that represent every person, organization, etc. on the platform. Entities are the backbone of the social credit network. Because people and organizations are both represented as entities, this allows Giving Credit to treat people and organizations equally. For example, just as people can give credit to each other, so too can organizations. This is all made possible by the entity model.
 tables:
   - title: Entity
-    name: webapp.entities_entity
+    name: webapp.entities_entity.
     description: Individual entity represtented on Giving Credit # category description
     fields: 
       - name: id
-        type: Number
+        type: Numeric
         description: Unique identifier
       - name: uuid
         type: UUID
@@ -23,5 +23,22 @@ tables:
       - name: visbility
         description: "Determines what entities can see this entity's profile (hidden, network, authenicated, public)."
         type: Text
-
-        
+  - title: Entity Summary
+    name: transformed.entity_summary
+    description: Summary statistics for each entity.
+    fields:
+      - name: entity_id
+        type: Numeric
+        description: Entity ID
+      - name: uuid
+        type: UUID
+        description: Entity UUID
+      - name: entity_type
+        type: Text
+        description: Entity type, such as 'person', or 'organization'
+      - name: count_social_credit_creditor
+        type: Numeric
+        description: Count of the number of lines of social credit where this entity is the creditor
+      - name: count_social_credit_debtor
+        type: Numeric
+        description: Count of the number of lines of social credit where this entity is the debtor

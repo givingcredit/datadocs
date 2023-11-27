@@ -167,7 +167,7 @@
     <section id="table-1">
       <h2>Entity</h2>
       <div class="block">
-        <code class="database-table-name">webapp.entities_entity</code>
+        <code class="database-table-name">webapp.entities_entity.</code>
       </div>
       <div class="mt-6 mb-6 is-size-5 has-text-grey">Individual entity represtented on Giving Credit</div>
     </section>
@@ -193,7 +193,9 @@
           <td>Unique identifier</td>
           <td>
             
-              Number
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
           </td>
         </tr>
         
@@ -272,6 +274,111 @@
               <i class="fa fa-paragraph" title="Text"></i>
             
               Text
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="section box">
+  <div class="">
+    <section id="table-2">
+      <h2>Entity Summary</h2>
+      <div class="block">
+        <code class="database-table-name">transformed.entity_summary</code>
+      </div>
+      <div class="mt-6 mb-6 is-size-5 has-text-grey">Summary statistics for each entity.</div>
+    </section>
+  </div>
+  <div class="">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-1">
+              <code>entity_id</code>
+              
+            </section>
+          </td>
+          <td>Entity ID</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-2">
+              <code>uuid</code>
+              
+            </section>
+          </td>
+          <td>Entity UUID</td>
+          <td>
+            
+              UUID
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-3">
+              <code>entity_type</code>
+              
+            </section>
+          </td>
+          <td>Entity type, such as 'person', or 'organization'</td>
+          <td>
+            
+              <i class="fa fa-paragraph" title="Text"></i>
+            
+              Text
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-4">
+              <code>count_social_credit_creditor</code>
+              
+            </section>
+          </td>
+          <td>Count of the number of lines of social credit where this entity is the creditor</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-5">
+              <code>count_social_credit_debtor</code>
+              
+            </section>
+          </td>
+          <td>Count of the number of lines of social credit where this entity is the debtor</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
           </td>
         </tr>
         
