@@ -11,9 +11,7 @@
 
 <div class="">
   <div class="block mt-6 mb-6">
-
       {{content|safe}}
-    
   </div>
 
   {% for group in groups %}
@@ -32,6 +30,15 @@
           {{section.name}}
           {% endif %}
         </a>
+        <ul>
+          {% for table in section.tables %}
+          <li>
+            <a href="{{section.getHtmlName()}}#{{table.name}}">
+              {{table.title}}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
       </li>
     {% endfor %}
     </ul>
