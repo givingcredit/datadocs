@@ -9,7 +9,7 @@ tables:
       Transaction between two accounts.
     fields: # list of fields in this category
       - name: id
-        type: Number
+        type: Numeric
         description: Transaction ID
       - name: uuid
         type: UUID

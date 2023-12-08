@@ -34,7 +34,7 @@ tables: # list of categories to place your fields in
     description: Each fund has exactly one Fund Type.
     fields: 
       - name: id
-        type: Number
+        type: Numeric
         description: Fund Type ID
       - name: name
         type: Text
@@ -50,7 +50,7 @@ tables: # list of categories to place your fields in
       and uses various Funds via Fund Membership.
     fields: 
       - name: id
-        type: Number
+        type: Numeric
         description: Fund Member ID
       - name: active
         type: Boolean

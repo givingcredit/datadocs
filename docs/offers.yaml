@@ -81,7 +81,7 @@ tables: # list of categories to place your fields in
       Captures signups for an offer.
     fields: 
       - name: id
-        type: Number
+        type: Numeric
         description: Offer signup ID
       - name: created_at
         type: Date

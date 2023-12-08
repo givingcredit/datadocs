@@ -1,0 +1,25 @@
+title: Outcomes
+description: Outcomes are achieved by borrowers, enabled by lenders. Outcomes model the social impact of peer-lending.
+tables:
+  - title: OutcomeType
+    name: webapp.outcomes_outcometype
+    description: Outcome type, such as 'housing', 'employment', etc.
+    fields: 
+      - name: id
+        type: Numeric
+        description: Outcome Type ID
+      - name: name
+        type: Text
+        description: Unique name for this outcome type
+      - name: display_name
+        description: Display name for this outcome type
+        type: Text
+      - name: Description
+        description: Description of this outcome type
+        type: Text
+      - name: created_at
+        description: Datetime the outcome type was created
+        type: Date
+      - name: updated_at
+        description: Datetime the outcome type was updated
+        type: Date

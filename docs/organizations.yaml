@@ -41,7 +41,7 @@ tables: # list of categories to place your fields in
     description: Organizations can have any number of constituents. A constituent is a relationship between a person and an organization.
     fields: 
       - name: id
-        type: Number
+        type: Numeric
         description: Constituent ID
       - name: status
         type: Text

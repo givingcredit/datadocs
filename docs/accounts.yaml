@@ -46,13 +46,13 @@ tables:
           is of type “Cash App”, the handle would be a user’s “cashtag”.
       - name: handle_email
         private: true
-        type: text
+        type: Text
         description: >
           Entity's email for this account. For example, if the type is “Paypal”, the user might 
           provide the email address associated with their Paypal account.
       - name: handle_phone
         private: true
-        type: text
+        type: Text
         description: >
           Entity's phone number for this account. For example, if the type is "Zelle", the user might 
           provide the phone number associated with their Zelle account.
@@ -69,7 +69,7 @@ tables:
         type: Text
         description: Internal system name, like 'paypal' or 'cashapp'
       - name: display_name
-        type: Texd
+        type: Text
         description: Display name, like 'Paypal Inc.' or 'Cash App'
       - name: website
         type: Text

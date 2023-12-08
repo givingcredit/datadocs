@@ -7,6 +7,7 @@ groups:
       - people
       - invitations
       - notifications
+      - outcomes
   - title: Partners
     description: Partner organizations capitalize social credit networks through Funds on Giving Credit.
     sections:

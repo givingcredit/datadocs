@@ -62,7 +62,7 @@ tables:
       each transaction related to this note. The fields here mirror that of Note.
     fields: # list of fields in this category
       - name: id
-        type: Number
+        type: Numeric
         description: Note History ID
       - name: status
         type: Text

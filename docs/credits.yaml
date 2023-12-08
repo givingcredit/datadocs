@@ -49,7 +49,7 @@ tables:
       each transaction related to this credit. The fields here mirror that of Credit.
     fields: # list of fields in this category
       - name: id
-        type: Number
+        type: Numeric
         description: Credit History ID
       - name: status
         type: Text
