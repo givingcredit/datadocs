@@ -55,6 +55,12 @@ tables:
       - name: outcome_type_id
         type: Numeric
         description: Outcome Type for this  Note
+      - name: outcome_id
+        type: Numeric
+        description: The outcome category for this ask
+      - name: activity_id
+        type: Numeric
+        description: The outcome of role 'activity' for this note
   - title: NoteHistory
     name: webapp.finances_notehistory
     description: >

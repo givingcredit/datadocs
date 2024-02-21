@@ -50,3 +50,9 @@ tables:
       - name: to_account_id
         type: Numeric
         description: ID of the account receiving this transaction
+      - name: outcome_id
+        type: Numeric
+        description: The outcome of role 'category' for this transaction
+      - name: activity_id
+        type: Numeric
+        description: The outcome of role 'activity' for this transaction

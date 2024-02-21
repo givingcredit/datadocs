@@ -11,11 +11,23 @@ tables:
       - name: name
         type: Text
         description: Unique name for this outcome type
-      - name: display_name
-        description: Display name for this outcome type
-        type: Text
+      - name: title
+        description: Title with language codes as keys.
+        type: JSON
       - name: Description
-        description: Description of this outcome type
+        description: Description with language codes as keys.
+        type: JSON
+      - name: active
+        description: Whether the outcome type is active or not
+        type: Boolean
+      - name: role
+        description: Role, such as 'category' or 'activity'
+        type: Text
+      - name: function
+        description: Function in the life of the outcome creator, such as "investment" or "buffer"
+        type: Text
+      - name: color
+        description: Hex color code for this outcome.
         type: Text
       - name: created_at
         description: Datetime the outcome type was created
@@ -23,3 +35,38 @@ tables:
       - name: updated_at
         description: Datetime the outcome type was updated
         type: Date
+  - title: Outcome
+    name: webapp.outcomes_outcome
+    description: Each entity can have one of each outcome type.
+    fields: 
+      - name: id
+        type: Numeric
+        description: Outcome ID
+      - name: uuid
+        type: UUID
+        description: UUID for the outcome
+      - name: entity_id
+        type: Numeric
+        description: Entity that created this outcome.
+      - name: outcome_type_id
+        type: Numeric
+        description: Outcome Type for this outcome
+      - name: created_at
+        description: Datetime the outcome was created
+        type: Date
+      - name: updated_at
+        description: Datetime the outcome was updated
+        type: Date
+  - title: Outcome Type Relation
+    name: webapp.outcomes_outcometyperelation
+    description: Hierarchical relationship between outcome types
+    fields: 
+      - name: id
+        type: Numeric
+        description: Relation ID
+      - name: child_id
+        type: Numeric
+        description: Child outcome type
+      - name: parent_id
+        type: Numeric
+        description: Parent outcome type

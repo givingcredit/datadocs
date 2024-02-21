@@ -222,16 +222,16 @@
         <tr class="field">
           <td>
             <section id="field-1-3">
-              <code>display_name</code>
+              <code>title</code>
               
             </section>
           </td>
-          <td>Display name for this outcome type</td>
+          <td>Title with language codes as keys.</td>
           <td>
             
-              <i class="fa fa-paragraph" title="Text"></i>
+              <i class="fa fa-code" title="Code"></i>
             
-              Text
+              JSON
           </td>
         </tr>
         
@@ -242,7 +242,39 @@
               
             </section>
           </td>
-          <td>Description of this outcome type</td>
+          <td>Description with language codes as keys.</td>
+          <td>
+            
+              <i class="fa fa-code" title="Code"></i>
+            
+              JSON
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-5">
+              <code>active</code>
+              
+            </section>
+          </td>
+          <td>Whether the outcome type is active or not</td>
+          <td>
+            
+              <i class="fa fa-toggle-off" title="Boolean"></i>
+            
+              Boolean
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-6">
+              <code>role</code>
+              
+            </section>
+          </td>
+          <td>Role, such as 'category' or 'activity'</td>
           <td>
             
               <i class="fa fa-paragraph" title="Text"></i>
@@ -253,7 +285,39 @@
         
         <tr class="field">
           <td>
-            <section id="field-1-5">
+            <section id="field-1-7">
+              <code>function</code>
+              
+            </section>
+          </td>
+          <td>Function in the life of the outcome creator, such as "investment" or "buffer"</td>
+          <td>
+            
+              <i class="fa fa-paragraph" title="Text"></i>
+            
+              Text
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-8">
+              <code>color</code>
+              
+            </section>
+          </td>
+          <td>Hex color code for this outcome.</td>
+          <td>
+            
+              <i class="fa fa-paragraph" title="Text"></i>
+            
+              Text
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-1-9">
               <code>created_at</code>
               
             </section>
@@ -269,7 +333,7 @@
         
         <tr class="field">
           <td>
-            <section id="field-1-6">
+            <section id="field-1-10">
               <code>updated_at</code>
               
             </section>
@@ -280,6 +344,202 @@
               <i class="fa fa-calendar" title="Date"></i>
             
               Date
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="section box">
+  <div class="">
+    <section id="webapp.outcomes_outcome">
+      <h2>Outcome</h2>
+      <div class="block">
+        <code class="database-table-name">webapp.outcomes_outcome</code>
+      </div>
+      <div class="mt-6 mb-6 is-size-5 has-text-grey">Each entity can have one of each outcome type.</div>
+    </section>
+  </div>
+  <div class="">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-1">
+              <code>id</code>
+              
+            </section>
+          </td>
+          <td>Outcome ID</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-2">
+              <code>uuid</code>
+              
+            </section>
+          </td>
+          <td>UUID for the outcome</td>
+          <td>
+            
+              UUID
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-3">
+              <code>entity_id</code>
+              
+            </section>
+          </td>
+          <td>Entity that created this outcome.</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-4">
+              <code>outcome_type_id</code>
+              
+            </section>
+          </td>
+          <td>Outcome Type for this outcome</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-5">
+              <code>created_at</code>
+              
+            </section>
+          </td>
+          <td>Datetime the outcome was created</td>
+          <td>
+            
+              <i class="fa fa-calendar" title="Date"></i>
+            
+              Date
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-2-6">
+              <code>updated_at</code>
+              
+            </section>
+          </td>
+          <td>Datetime the outcome was updated</td>
+          <td>
+            
+              <i class="fa fa-calendar" title="Date"></i>
+            
+              Date
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="section box">
+  <div class="">
+    <section id="webapp.outcomes_outcometyperelation">
+      <h2>Outcome Type Relation</h2>
+      <div class="block">
+        <code class="database-table-name">webapp.outcomes_outcometyperelation</code>
+      </div>
+      <div class="mt-6 mb-6 is-size-5 has-text-grey">Hierarchical relationship between outcome types</div>
+    </section>
+  </div>
+  <div class="">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr class="field">
+          <td>
+            <section id="field-3-1">
+              <code>id</code>
+              
+            </section>
+          </td>
+          <td>Relation ID</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-3-2">
+              <code>child_id</code>
+              
+            </section>
+          </td>
+          <td>Child outcome type</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
+          </td>
+        </tr>
+        
+        <tr class="field">
+          <td>
+            <section id="field-3-3">
+              <code>parent_id</code>
+              
+            </section>
+          </td>
+          <td>Parent outcome type</td>
+          <td>
+            
+              <i class="fa fa-hashtag" title="Numeric"></i>
+            
+              Numeric
           </td>
         </tr>
         

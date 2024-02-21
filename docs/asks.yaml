@@ -42,6 +42,12 @@ tables:
       - name: outcome_type_id
         type: Numeric
         description: Outcome Type ID, if one is associated with this ask
+      - name: outcome_id
+        type: Numeric
+        description: The outcome category for this ask
+      - name: activity_id
+        type: Numeric
+        description: The outcome of role 'activity' for this ask
       - name: credit_id
         type: Numeric
         description: Credit ID, if this ask is being made on a line of credit
