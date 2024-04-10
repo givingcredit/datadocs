@@ -32,16 +32,13 @@ tables:
         description: Who can see this ask, such as 'public', 'network', or 'individual'
       - name: status
         type: Text
-        description: Status of the ask, such as 'requestd', 'settled', or 'cancelled'
+        description: Status of the ask, such as 'requestd', 'settled', or 'canceled'
       - name: requested_by_id
         type: Numeric
         description: Entity that made the request
       - name: requested_of_id
         type: Numeric
         description: Entity that is being asked
-      - name: outcome_type_id
-        type: Numeric
-        description: Outcome Type ID, if one is associated with this ask
       - name: outcome_id
         type: Numeric
         description: The outcome category for this ask

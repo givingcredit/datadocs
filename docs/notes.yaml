@@ -52,9 +52,6 @@ tables:
       - name: debtor_signatory_id
         type: Numeric
         description: Entity ID that signed for the debtor
-      - name: outcome_type_id
-        type: Numeric
-        description: Outcome Type for this  Note
       - name: outcome_id
         type: Numeric
         description: The outcome category for this ask
